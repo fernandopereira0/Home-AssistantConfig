@@ -1,0 +1,49 @@
+#######################################################################################################################
+#  ____            _       ____    _____           _____   ____  
+# / ___|    __ _  | |_    |  _ \  |_   _|         | ____| / ___| 
+# \___ \   / _` | | __|   | |_) |   | |    _____  |  _|   \___ \ 
+#  ___) | | (_| | | |_    |  __/    | |   |_____| | |___   ___) |
+# |____/   \__,_|  \__|   |_|       |_|           |_____| |____/ 
+#
+#######################################################################################################################
+ - platform: generic
+   still_image_url: http://api.sat24.com/animated/SP/visual/1/GMT%20Standard%20Time/8152117
+   name: Satélite Portugal/Espanha
+
+#######################################################################################################################
+#  ____            _       ___   ____      ____    _____           _____   ____  
+# / ___|    __ _  | |_    |_ _| |  _ \    |  _ \  |_   _|         | ____| / ___| 
+# \___ \   / _` | | __|    | |  | |_) |   | |_) |   | |    _____  |  _|   \___ \ 
+#  ___) | | (_| | | |_     | |  |  _ <    |  __/    | |   |_____| | |___   ___) |
+# |____/   \__,_|  \__|   |___| |_| \_\   |_|       |_|           |_____| |____/ 
+#                                                                                
+#######################################################################################################################
+ - platform: generic
+   still_image_url: http://api.sat24.com/animated/SP/infraPolair/1/GMT%20Standard%20Time/3251484
+   name: Satélite InfraRed Portugal/Espanha      
+  
+#######################################################################################################################
+#  ___   ____    ____  
+# |_ _| / ___|  / ___| 
+#  | |  \___ \  \___ \ 
+#  | |   ___) |  ___) |
+# |___| |____/  |____/ 
+#                      
+#######################################################################################################################  
+ - platform: generic
+   name: ISS
+   still_image_url: http://staticmap.openstreetmap.de/staticmap.php?center={{ states.binary_sensor.iss.attributes.lat }},{{ states.binary_sensor.iss.attributes.long }}&zoom=4&size=865x512&maptype=mapnik&markers={{ states.binary_sensor.iss.attributes.lat }},{{ states.binary_sensor.iss.attributes.long }},lightblue
+   limit_refetch_to_url_change: true
+  
+#######################################################################################################################
+#  _____                   _                              _     _                 
+# |  ___|   ___   _ __    | |       ___     ___    __ _  | |_  (_)   ___    _ __  
+# | |_     / _ \ | '__|   | |      / _ \   / __|  / _` | | __| | |  / _ \  | '_ \ 
+# |  _|   |  __/ | |      | |___  | (_) | | (__  | (_| | | |_  | | | (_) | | | | |
+# |_|      \___| |_|      |_____|  \___/   \___|  \__,_|  \__| |_|  \___/  |_| |_|
+#                                                                                 
+#######################################################################################################################
+ - platform: generic
+   name: Localização do Fernando
+   still_image_url: https://maps.googleapis.com/maps/api/staticmap?center={{ states.device_tracker.fernando.attributes.latitude }},{{ states.device_tracker.fernando.attributes.longitude }}&zoom=13&size=500x500&maptype=roadmap&markers=color:blue%7Clabel:P%7C{{ states.device_tracker.fernando.attributes.latitude }},{{ states.device_tracker.fernando.attributes.longitude }}&key=AIzaSyCVYMTgelLA7L41lG4cfGpjr5Trymr0_pM
+   limit_refetch_to_url_change: true

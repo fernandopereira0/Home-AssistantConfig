@@ -1,0 +1,30 @@
+#######################################################################################################################
+#  _       _           _                     ____                              
+# | |     (_) __   __ (_)  _ __     __ _    |  _ \    ___     ___    _ __ ___  
+# | |     | | \ \ / / | | | '_ \   / _` |   | |_) |  / _ \   / _ \  | '_ ` _ \ 
+# | |___  | |  \ V /  | | | | | | | (_| |   |  _ <  | (_) | | (_) | | | | | | |
+# |_____| |_|   \_/   |_| |_| |_|  \__, |   |_| \_\  \___/   \___/  |_| |_| |_|
+#                                  |___/                                       
+#######################################################################################################################
+  - platform: broadlink
+    name: AC Sala
+    host: 192.168.1.81
+    mac: '78:0f:77:18:4a:be'
+    ircodes_ini: 'broadlink_climate_codes/baxi.ini'
+    min_temp: 16
+    max_temp: 32
+    target_temp: 20
+    target_temp_step: 1
+    temp_sensor: sensor.piso_0_temperature
+    default_operation: 'off'
+    default_fan_mode: auto
+    customize:
+      operations:
+        - 'off'
+        - cool
+        - heat
+      fan_modes:
+        - low
+        - mid
+        - high
+        - auto

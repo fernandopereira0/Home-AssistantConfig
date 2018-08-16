@@ -1,0 +1,138 @@
+#######################################################################################################################
+#   ____                                      
+#  / ___|  _ __    ___    _   _   _ __    ___ 
+# | |  _  | '__|  / _ \  | | | | | '_ \  / __|
+# | |_| | | |    | (_) | | |_| | | |_) | \__ \
+#  \____| |_|     \___/   \__,_| | .__/  |___/
+#                                |_|          
+#
+#######################################################################################################################                                
+
+    pi_state:
+        name: RaspberryPi
+        view: no
+        entities:
+            - sensor.disk_free_
+            - sensor.disk_use_percent_
+            - sensor.last_boot
+            - sensor.memory_free
+            - sensor.memory_use_percent
+            - sensor.network_in_eth0
+            - sensor.network_out_eth0
+            - sensor.processor_use
+            - sensor.since_last_boot
+    piso0_temp:
+        name: Dados do Piso 0
+        view: no
+        entities:
+            - sensor.piso_0_temperature
+            - sensor.piso_0_humidity
+            - sensor.piso_0_battery
+    piso1_temp:
+        name: Dados do Piso 1
+        view: no
+        entities:
+            - sensor.piso_1_temperature
+            - sensor.piso_1_humidity
+            - sensor.piso_1_battery
+    
+    maquinaloica:
+        name: Máquina da loiça
+        view: no
+        entities:
+            - switch.maquina_da_loica
+            - sensor.maquina_da_loica_wats
+            - sensor.maquina_da_loica_amperes
+            - sensor.maquina_da_loica_voltagem
+            - sensor.maquina_da_loica_hoje
+            - sensor.maquina_da_loica_hoje_
+            - sensor.maquina_da_loica_ontem
+            - sensor.maquina_da_loica_ontem_
+            - sensor.maquina_da_loica_total
+            - sensor.maquina_da_loica_total_
+    
+    luzes_piso1:
+        name: Luzes do Piso 1
+        view: no
+        entities:
+            - light.escadas
+            - light.corredor_piso_1
+            
+    familia:
+        name: Familia
+        view: no
+        entities:
+            - device_tracker.fernando
+            - device_tracker.catarina
+            - sensor.de_casa_a_primavera
+            - sensor.de_casa_a_dgrs
+            - sensor.da_primavera_a_casa
+            - sensor.do_jardim_de_infancia_a_casa
+            - camera.localizacao_do_fernando
+    
+    ac_sala:
+        name: AC da Sala
+        view: no
+        entities:
+            - climate.ac_sala
+            - switch.ac_sala_ecomode
+            
+#######################################################################################################################
+# __     __  _                         
+# \ \   / / (_)   ___  __      __  ___ 
+#  \ \ / /  | |  / _ \ \ \ /\ / / / __|
+#   \ V /   | | |  __/  \ V  V /  \__ \
+#    \_/    |_|  \___|   \_/\_/   |___/
+#
+#######################################################################################################################
+    
+    default_view:
+        view: yes
+        icon: mdi:home
+        entities:
+            - sensor.certificado_ssl
+            - sun.sun
+            - weather.guimaraes
+            - camera.satelite_portugalespanha
+            - camera.satelite_infrared_portugalespanha
+            - group.familia
+    lights:
+        view: yes
+        icon: mdi:lightbulb-on-outline
+        entities:
+            - group.luzes_piso1
+
+    blinds:
+        view: yes
+        icon: mdi:blinds
+        
+    electricity_consumption:
+        view: yes
+        icon: mdi:flash
+        entities:
+            - group.maquinaloica
+           
+    television:
+        view: yes
+        icon: mdi:television
+        entities:
+            - media_player.samsung
+            - media_player.meo
+
+    temperature:
+        view: yes
+        icon: mdi:thermometer-lines
+        entities:
+            - group.piso0_temp
+            - climate.ac_sala
+            - group.ac_sala
+            - group.piso1_temp
+            - history_graph.temperatura_no_interior_da_casa
+            - history_graph.humidade_no_interior_da_casa
+    misc:
+        view: yes
+        icon: mdi:memory
+        entities:
+            - group.pi_state
+            - input_select.homeassistant_template
+    

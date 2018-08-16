@@ -1,0 +1,189 @@
+#######################################################################################################################
+#  ____    ____    _                              _   
+# / ___|  / ___|  | |         ___    ___   _ __  | |_ 
+# \___ \  \___ \  | |        / __|  / _ \ | '__| | __|
+#  ___) |  ___) | | |___    | (__  |  __/ | |    | |_ 
+# |____/  |____/  |_____|    \___|  \___| |_|     \__|
+#
+#######################################################################################################################                                  
+  - platform: command_line
+    name: Certificado SSL
+    unit_of_measurement: days
+    scan_interval: 10800
+    command: "ssl-cert-check -b -c /etc/letsencrypt/live/casaprazins.duckdns.org/cert.pem | awk '{ print $NF }'"
+
+#######################################################################################################################    
+# __        __                 _     _                                                 _   _          _     _                 
+# \ \      / /   ___    __ _  | |_  | |__     ___   _ __     _ __    _ __    ___    __| | (_)   ___  | |_  (_)   ___    _ __  
+#  \ \ /\ / /   / _ \  / _` | | __| | '_ \   / _ \ | '__|   | '_ \  | '__|  / _ \  / _` | | |  / __| | __| | |  / _ \  | '_ \ 
+#   \ V  V /   |  __/ | (_| | | |_  | | | | |  __/ | |      | |_) | | |    |  __/ | (_| | | | | (__  | |_  | | | (_) | | | | |
+#    \_/\_/     \___|  \__,_|  \__| |_| |_|  \___| |_|      | .__/  |_|     \___|  \__,_| |_|  \___|  \__| |_|  \___/  |_| |_|
+#                                                           |_|                                                               
+#######################################################################################################################
+  - platform: yr
+    name: Meteorologia
+
+#######################################################################################################################    
+#  _____                                                    _                         
+# |_   _|   ___   _ __ ___    _ __     ___   _ __    __ _  | |_   _   _   _ __    ___ 
+#   | |    / _ \ | '_ ` _ \  | '_ \   / _ \ | '__|  / _` | | __| | | | | | '__|  / _ \
+#   | |   |  __/ | | | | | | | |_) | |  __/ | |    | (_| | | |_  | |_| | | |    |  __/
+#   |_|    \___| |_| |_| |_| | .__/   \___| |_|     \__,_|  \__|  \__,_| |_|     \___|
+#                            |_|                                                      
+#######################################################################################################################
+  - platform: mitemp_bt
+    mac: '4C:65:A8:D3:CB:D8'
+    name: Piso 0
+    force_update: false
+    median: 1
+    monitored_conditions:
+      - temperature
+      - humidity
+      - battery
+
+  - platform: mitemp_bt
+    mac: '4C:65:A8:D3:CC:A0'
+    name: Piso 1
+    force_update: false
+    median: 1
+    monitored_conditions:
+      - temperature
+      - humidity
+      - battery
+
+#######################################################################################################################      
+#  ____    _                                 _   _                    _                 
+# |  _ \  (_)    _ __ ___     ___    _ __   (_) | |_    ___    _ __  (_)  _ __     __ _ 
+# | |_) | | |   | '_ ` _ \   / _ \  | '_ \  | | | __|  / _ \  | '__| | | | '_ \   / _` |
+# |  __/  | |   | | | | | | | (_) | | | | | | | | |_  | (_) | | |    | | | | | | | (_| |
+# |_|     |_|   |_| |_| |_|  \___/  |_| |_| |_|  \__|  \___/  |_|    |_| |_| |_|  \__, |
+#                                                                                 |___/ 
+#######################################################################################################################
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /
+      - type: disk_free
+        arg: /
+      - type: memory_use_percent
+      - type: memory_free
+      - type: network_in
+        arg: eth0
+      - type: network_out
+        arg: eth0
+      - type: processor_use
+      - type: last_boot
+      - type: since_last_boot
+
+#######################################################################################################################      
+#      _   _         _                                _                     
+#   __| | (_)  ___  | |__   __      __   __ _   ___  | |__     ___   _ __   
+#  / _` | | | / __| | '_ \  \ \ /\ / /  / _` | / __| | '_ \   / _ \ | '__|  
+# | (_| | | | \__ \ | | | |  \ V  V /  | (_| | \__ \ | | | | |  __/ | |     
+#  \__,_| |_| |___/ |_| |_|   \_/\_/    \__,_| |___/ |_| |_|  \___| |_|     
+#
+#######################################################################################################################
+                                        
+#watts
+  - platform: mqtt
+    name: "Maquina da Loiça Wats"
+    state_topic: "tele/maquinaloica/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Power"] }}'
+    unit_of_measurement: "W"
+    icon: mdi:power-plug
+#Amperes #
+  - platform: mqtt
+    name: "Maquina da Loiça Amperes"
+    state_topic: "tele/maquinaloica/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Current"] }}'
+    unit_of_measurement: "A"
+    icon: mdi:flash-outline
+#Voltagem
+  - platform: mqtt
+    name: "Maquina da Loiça Voltagem"
+    state_topic: "tele/maquinaloica/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+    unit_of_measurement: "V"
+    icon: mdi:led-variant-on
+#Hoje kWh 
+  - platform: mqtt
+    name: "Maquina da Loiça Hoje"
+    state_topic: "tele/maquinaloica/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Today"] }}'
+    unit_of_measurement: "kWh"
+    icon: mdi:calendar-check
+#Hoje € 
+  - platform: mqtt
+    name: "Maquina da Loiça Hoje (€)"
+    state_topic: "tele/maquinaloica/SENSOR"
+    value_template: >-
+      {{states.sensor.maquina_da_loica_hoje.state | multiply(0.1603) | round(4)}}
+    unit_of_measurement: "€"
+    icon: mdi:cash-usd
+#Ontem kWh
+  - platform: mqtt
+    name: "Maquina da Loiça Ontem"
+    state_topic: "tele/maquinaloica/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Yesterday"] }}'
+    unit_of_measurement: "kWh"  
+    icon: mdi:calendar-clock
+#Ontem €
+  - platform: mqtt
+    name: "Maquina da Loiça Ontem (€)"
+    state_topic: "tele/maquinaloica/SENSOR"
+    value_template: >-
+      {{states.sensor.maquina_da_loica_ontem.state | multiply(0.1603) | round(4)}}
+    unit_of_measurement: "€"
+    icon: mdi:cash-usd
+#Total kWh 
+  - platform: mqtt
+    name: "Maquina da Loiça Total"
+    state_topic: "tele/maquinaloica/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Total"] }}'
+    unit_of_measurement: "kWh"
+    icon: mdi:calendar-multiple
+#Total €
+  - platform: mqtt
+    name: "Maquina da Loiça Total (€)"
+    state_topic: "tele/maquinaloica/SENSOR"
+    value_template: >-
+      {{states.sensor.maquina_da_loica_total.state | multiply(0.1603) | round(4)}}
+    unit_of_measurement: "€"
+    icon: mdi:cash-usd
+
+
+#######################################################################################################################    
+#                                  _            _                                   _     _     _                    
+#   __ _    ___     ___     __ _  | |   ___    | |_   _ __    __ _  __   __   ___  | |   | |_  (_)  _ __ ___     ___ 
+#  / _` |  / _ \   / _ \   / _` | | |  / _ \   | __| | '__|  / _` | \ \ / /  / _ \ | |   | __| | | | '_ ` _ \   / _ \
+# | (_| | | (_) | | (_) | | (_| | | | |  __/   | |_  | |    | (_| |  \ V /  |  __/ | |   | |_  | | | | | | | | |  __/
+#  \__, |  \___/   \___/   \__, | |_|  \___|    \__| |_|     \__,_|   \_/    \___| |_|    \__| |_| |_| |_| |_|  \___|
+#  |___/                   |___/                                                                                     
+#######################################################################################################################
+  - platform: google_travel_time 
+    name: De casa à PRIMAVERA
+    api_key: !secret TravelAPI_key
+    origin: zone.home
+    destination: zone.trabalho_do_fernando
+    icon: mdi:motorbike
+    
+  - platform: google_travel_time 
+    name: Da PRIMAVERA a casa
+    api_key: !secret TravelAPI_key
+    origin: zone.trabalho_do_fernando
+    destination: zone.home
+    icon: mdi:motorbike
+    
+  - platform: google_travel_time 
+    name: De casa à DGRS
+    api_key: !secret TravelAPI_key
+    origin: zone.home
+    destination: zone.trabalho_da_catarina
+    icon: mdi:car-hatchback
+    
+  - platform: google_travel_time 
+    name: Do jardim de infância a casa
+    api_key: !secret TravelAPI_key
+    origin: zone.escola_da_margarida
+    destination: zone.home
+    icon: mdi:bus-school

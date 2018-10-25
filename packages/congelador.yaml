@@ -1,0 +1,221 @@
+
+#######################################################################################################################      
+#      ___         ___           ___           ___           ___           ___           ___     
+#     /  /\       /  /\         /  /\         /  /\         /  /\         /  /\         /  /\    
+#    /  /:/_     /  /::\       /  /:/_       /  /:/_       /  /::|       /  /:/_       /  /::\   
+#   /  /:/ /\   /  /:/\:\     /  /:/ /\     /  /:/ /\     /  /:/:|      /  /:/ /\     /  /:/\:\  
+#  /  /:/ /:/  /  /:/~/:/    /  /:/ /:/_   /  /:/ /:/_   /  /:/|:|__   /  /:/ /:/_   /  /:/~/:/  
+# /__/:/ /:/  /__/:/ /:/___ /__/:/ /:/ /\ /__/:/ /:/ /\ /__/:/ |:| /\ /__/:/ /:/ /\ /__/:/ /:/___
+# \  \:\/:/   \  \:\/:::::/ \  \:\/:/ /:/ \  \:\/:/ /:/ \__\/  |:|/:/ \  \:\/:/ /:/ \  \:\/:::::/
+#  \  \::/     \  \::/~~~~   \  \::/ /:/   \  \::/ /:/      |  |:/:/   \  \::/ /:/   \  \::/~~~~ 
+#   \  \:\      \  \:\        \  \:\/:/     \  \:\/:/       |  |::/     \  \:\/:/     \  \:\     
+#    \  \:\      \  \:\        \  \::/       \  \::/        |  |:/       \  \::/       \  \:\    
+#     \__\/       \__\/         \__\/         \__\/         |__|/         \__\/         \__\/    
+#######################################################################################################################
+
+#homeassistant:
+##   ____                 _                         _              
+##  / ___|  _   _   ___  | |_    ___    _ __ ___   (_)  ____   ___ 
+## | |     | | | | / __| | __|  / _ \  | '_ ` _ \  | | |_  /  / _ \
+## | |___  | |_| | \__ \ | |_  | (_) | | | | | | | | |  / /  |  __/
+##  \____|  \__,_| |___/  \__|  \___/  |_| |_| |_| |_| /___|  \___|
+#
+#  customize:
+#    switch.congelador:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.congelador_wats:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.congelador_amperes:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.congelador_voltagem:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.congelador_hoje:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.congelador_hoje_:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.congelador_ontem:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.congelador_ontem_:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.congelador_total:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.congelador_total_:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+
+#  ____               _   _            _     
+# / ___|  __      __ (_) | |_    ___  | |__  
+# \___ \  \ \ /\ / / | | | __|  / __| | '_ \ 
+#  ___) |  \ V  V /  | | | |_  | (__  | | | |
+# |____/    \_/\_/   |_|  \__|  \___| |_| |_|
+  switch:
+    - platform: mqtt
+      name: "Congelador"
+      state_topic: "stat/congelador/POWER"
+      command_topic: "cmnd/congelador/power"
+      availability_topic: "tele/congelador/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false    
+#  ____                                      
+# / ___|    ___   _ __    ___    ___    _ __ 
+# \___ \   / _ \ | '_ \  / __|  / _ \  | '__|
+#  ___) | |  __/ | | | | \__ \ | (_) | | |   
+# |____/   \___| |_| |_| |___/  \___/  |_|     
+  sensor:
+  #watts
+    - platform: mqtt
+      name: "Congelador Wats"
+      state_topic: "tele/congelador/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Power"] }}'
+      unit_of_measurement: "W"
+      icon: mdi:power-plug
+  #Amperes #
+    - platform: mqtt
+      name: "Congelador Amperes"
+      state_topic: "tele/congelador/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Current"] }}'
+      unit_of_measurement: "A"
+      icon: mdi:flash-outline
+  #Voltagem
+    - platform: mqtt
+      name: "Congelador Voltagem"
+      state_topic: "tele/congelador/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+      unit_of_measurement: "V"
+      icon: mdi:led-variant-on
+  #Hoje kWh 
+    - platform: mqtt
+      name: "Congelador Hoje"
+      state_topic: "tele/congelador/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Today"] }}'
+      unit_of_measurement: "kWh"
+      icon: mdi:calendar-check
+  #Hoje € 
+    - platform: mqtt
+      name: "Congelador Hoje (€)"
+      state_topic: "tele/congelador/SENSOR"
+      value_template: >-
+        {{states.sensor.congelador_hoje.state | multiply(0.1603) | round(4)}}
+      unit_of_measurement: "€"
+      icon: mdi:cash-usd
+  #Ontem kWh
+    - platform: mqtt
+      name: "Congelador Ontem"
+      state_topic: "tele/congelador/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Yesterday"] }}'
+      unit_of_measurement: "kWh"  
+      icon: mdi:calendar-clock
+  #Ontem €
+    - platform: mqtt
+      name: "Congelador Ontem (€)"
+      state_topic: "tele/congelador/SENSOR"
+      value_template: >-
+        {{states.sensor.congelador_ontem.state | multiply(0.1603) | round(4)}}
+      unit_of_measurement: "€"
+      icon: mdi:cash-usd
+  #Total kWh 
+    - platform: mqtt
+      name: "Congelador Total"
+      state_topic: "tele/congelador/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Total"] }}'
+      unit_of_measurement: "kWh"
+      icon: mdi:calendar-multiple
+  #Total €
+    - platform: mqtt
+      name: "Congelador Total (€)"
+      state_topic: "tele/congelador/SENSOR"
+      value_template: >-
+        {{states.sensor.congelador_total.state | multiply(0.1603) | round(4)}}
+      unit_of_measurement: "€"
+      icon: mdi:cash-usd
+
+      
+      
+#     _              _                                 _     _                 
+#    / \     _   _  | |_    ___    _ __ ___     __ _  | |_  (_)   ___    _ __  
+#   / _ \   | | | | | __|  / _ \  | '_ ` _ \   / _` | | __| | |  / _ \  | '_ \ 
+#  / ___ \  | |_| | | |_  | (_) | | | | | | | | (_| | | |_  | | | (_) | | | | |
+# /_/   \_\  \__,_|  \__|  \___/  |_| |_| |_|  \__,_|  \__| |_|  \___/  |_| |_|
+  automation:
+    - id: congelador_on_restart
+      alias: 'Atualizar congelador ao reiniciar HA'
+      hide_entity: True
+      trigger:
+        - platform: homeassistant
+          event: start
+      action:
+        - service: mqtt.publish
+          data:
+            topic: "cmnd/congelador/power"
+            payload: ""
+            qos: 0
+            retain: 0
+    - id: congelador_off
+      alias: 'Congelador OFF'
+      trigger:
+        - platform: state
+          entity_id: switch.congelador
+          from: 'on'
+          to: 'off'
+      action:
+        - service: notify.pushbullet
+          data_template:
+            title: "DANGER: Congelador desligado"
+            message: "CUIDADO - O congelador foi desligado e estava a {{ states.sensor.congelador_wats.state }} watts, {{ states.sensor.congelador_amperes.state }} amperes e {{ states.sensor.congelador_voltagem.state }} volts"
+            target:
+              - email/fernando.pereira.ano@gmail.com
+              - email/ccaattaarriinnaa@gmail.com
+        - service: script.notify_save_to_file
+          data:
+            message: '{{ as_timestamp (now()) | timestamp_custom("%d/%b/%Y %T") }} - CUIDADO - O congelador foi desligado e estava a {{ states.sensor.congelador_wats.state }} watts, {{ states.sensor.congelador_amperes.state }} amperes e {{ states.sensor.congelador_voltagem.state }} volts'      
+        - service: switch.turn_on
+          entity_id: switch.congelador
+
+#   ____                                
+#  / ___|  _ __    ___    _   _   _ __  
+# | |  _  | '__|  / _ \  | | | | | '_ \ 
+# | |_| | | |    | (_) | | |_| | | |_) |
+#  \____| |_|     \___/   \__,_| | .__/ 
+#                                |_|              
+  group:
+    congelador_pow:
+        name: Consumo Congelador
+        view: no
+        entities:
+            - sensor.congelador_wats
+            - sensor.congelador_amperes
+            - sensor.congelador_voltagem
+            - sensor.congelador_hoje
+            - sensor.congelador_hoje_
+            - sensor.congelador_ontem
+            - sensor.congelador_ontem_
+            - sensor.congelador_total
+            - sensor.congelador_total_
+            
+    congelador:
+        name: Congelador
+        view: no
+        entities:
+            - switch.congelador
+            - sensor.congelador_wats
+            - sensor.congelador_amperes
+            - sensor.congelador_voltagem
+            - sensor.congelador_hoje
+            - sensor.congelador_hoje_
+            - sensor.congelador_ontem
+            - sensor.congelador_ontem_
+            - sensor.congelador_total
+            - sensor.congelador_total_

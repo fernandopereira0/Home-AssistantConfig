@@ -3,6 +3,9 @@
 *.csr
 *.crt
 *.key
+*.sh
+!dropbox
+!fuel_info
 www
 OZW_Log.txt
 home-assistant.log

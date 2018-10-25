@@ -1,0 +1,326 @@
+#=================
+# === Automations
+#=================
+automation:
+
+  #=====================================================================
+  #=== Adjust weather durations if:
+  #===   the baseline duration is changed
+  #===   the temperature threshold or rainfall baseline are changed
+  #===   use weather adjustment is turn on
+  #=====================================================================
+  - alias: Duration changed in cycle1
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id:
+          - input_number.cycle1_zone1_duration
+          - input_number.cycle1_zone2_duration
+    action:
+      - service: script.adjust_cycle1_durations
+
+  - alias: Duration changed in cycle2
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id:
+          - input_number.cycle2_zone1_duration
+          - input_number.cycle2_zone2_duration
+    action:
+      - service: script.adjust_cycle2_durations
+
+  - alias: Change in rain baseline or temp baseline
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id:
+          - input_number.temperature_baseline
+          - input_number.rainfall_threshold
+    action:
+      - service: script.adjust_cycle1_durations
+      - service: script.adjust_cycle2_durations
+      
+  - alias: Use weather adjustment turned on
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id:
+          - input_boolean.cycle1_use_weather_adjustment
+          - input_boolean.cycle2_use_weather_adjustment
+        to: 'on'
+    action:
+      - service: script.adjust_cycle1_durations
+      - service: script.adjust_cycle2_durations
+      
+  #===============================================
+  #=== Cycle historic weather data in the history
+  #===============================================
+  - alias: Collect weather data
+    initial_state: 'on'
+    trigger:
+      - platform: time
+        at: '23:55:00'
+
+    action:
+      # Cycle the temperature figures
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.temp_minus5
+          value: >
+            {{ states('input_number.temp_minus4') }}
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.temp_minus4
+          value: >
+            {{ states('input_number.temp_minus3') }}
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.temp_minus3
+          value: >
+            {{ states('input_number.temp_minus2') }}
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.temp_minus2
+          value: >
+            {{ states('input_number.temp_minus1') }}
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.temp_minus1
+          value: >
+            {{ states('input_number.temp_minus0') }}
+      
+      # Reset todays temp to low - the average weather calculations happen every
+      # 30 mins and will only update todays temperature if it goes up.
+      # This is because the DarkSky max temperature appears to change during
+      # the day to reflect max temperature for the remainder of the day.
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.temp_minus0
+          value: '0'
+
+      # Cycle the rainfall figures
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.rain_minus3
+          value: >
+            {{ states('input_number.rain_minus2') }}
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.rain_minus2
+          value: >
+            {{ states('input_number.rain_minus1') }}
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.rain_minus1
+          value: >
+            {{ states('input_number.rain_minus0') }}
+      
+      # Set today's forecast rain
+      # DarkSky rain is measured in mm/h so multiply by 24 then multiply by the probibility of rain.
+      # This is done here so that it is only done once a day after midnight.
+      # The forcast figues go up and down all day so the the best we can do for history
+      # is take the whole day forecast once only.
+      # We do NOT want to do it every time a re-calculation of the averages is performed.
+
+      - wait_template: "{{ states.sensor.time.state == '00:10' }}"
+
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.rain_minus0
+          value: >
+            {{ float(states.sensor.dark_sky_precip_intensity.state) * 24 *
+               (float(states.sensor.dark_sky_precip_probability.state) / 100) }}
+
+      # Calculate temperature and rainfall averages
+      - service: script.calculate_average_weather_conditions
+      - wait_template: "{{ is_state('script.calculate_average_weather_conditions', 'off') }}"
+
+      # Adjust Cycle 1 durations
+      - service: script.adjust_cycle1_durations
+      - wait_template: "{{ is_state('script.adjust_cycle1_durations', 'off') }}"
+
+      # Adjust Cycle 2 durations
+      - service: script.adjust_cycle2_durations
+      - wait_template: "{{ is_state('script.adjust_cycle2_durations', 'off') }}"
+      
+#=================================================
+#=== Recalculate average weather conditions every
+#=== 30 minutes to account for todays weather
+#=================================================
+  - alias: Update average weather every 30 mins
+    initial_state: 'on'
+    trigger:
+      - platform: time
+        minutes: '/30'
+        seconds: 00
+    action:
+      - service: script.calculate_average_weather_conditions
+
+
+#============
+#=== Scripts
+#============
+script:
+
+  #=========================================
+  #=== Calculate average weather conditions
+  #=========================================
+  calculate_average_weather_conditions:
+    sequence:
+
+      # Set today's forecast high temperature
+      # but only if it has gone up
+      # temp_minus0 is set to low evry night at 23:50 when the weather
+      # information is cycled
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.temp_minus0  
+          value: >
+            {% if states.input_number.temp_minus0.state | float < states.sensor.dark_sky_daily_high_temperature.state | float %}
+              {{ states('sensor.dark_sky_daily_high_temperature') }}
+            {% else %}
+              {{ states('input_number.temp_minus0') }}
+            {% endif %}
+
+      # Calculate average high temp for the today and yesterday
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.temp_high_2days
+          value: >
+            {{ ((float(states.input_number.temp_minus0.state) + 
+                 float(states.input_number.temp_minus1.state)) / 2 ) | round  }}
+    
+      # Calculate average high temp for the today and yesterday and previous 3 days
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.temp_high_5days
+          value: >
+            {{ ((float(states.input_number.temp_minus0.state) +
+                 float(states.input_number.temp_minus1.state) +
+                 float(states.input_number.temp_minus2.state) + 
+                 float(states.input_number.temp_minus3.state) + 
+                 float(states.input_number.temp_minus4.state)) / 5) | round }}
+
+      # Adjust the total amount of rain depending on how many days ago it was.
+      # If 3 days ago take 20% of the rain.
+      # If 2 days ago take 50% of the rain.
+      # If yesterday take 80% of the rain.
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.rain_3days_ratio
+          value: >
+            {{ (float(states.input_number.rain_minus1.state) * 0.8) +
+               (float(states.input_number.rain_minus2.state) * 0.5) +
+               (float(states.input_number.rain_minus3.state) * 0.2) }}
+
+      # Add in todays forecast rain
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.rain_3days_ratio
+          value: >
+            {{ float(states.input_number.rain_3days_ratio.state) + 
+               (float(states.input_number.rain_minus0.state)) }}  
+
+      # Convert into a ratio (maximum 1.00) used to reduce irrigation time or stop it altogether:
+      #   Rain needed in last 3 days to stop grass irrigation is set in RainfallThreshold
+      #   Rain levels less than this amount will be used to reduce irrigation run times proportionally
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.rain_3days_ratio
+          value: >
+            {{ states.input_number.rain_3days_ratio.state | float / states.input_number.rainfall_threshold.state | float }}
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.rain_3days_ratio
+          value: >
+            {% if states.input_number.rain_3days_ratio.state | float > 1 %}
+              1
+            {% else %}
+              {{ states.input_number.rain_3days_ratio.state }}
+            {% endif %}
+
+
+  #=========================================
+  #=== Adjust duration for zones in cycle 1
+  #=========================================
+  adjust_cycle1_durations:
+    sequence:
+      - service: script.calculate_adjusted_zone_durations
+        data:
+          cycle: '1'
+          zone: '1'
+      - wait_template: "{{ is_state('script.calculate_adjusted_zone_durations', 'off') }}"
+      
+      - service: script.calculate_adjusted_zone_durations
+        data:
+          cycle: '1'
+          zone: '2'
+      - wait_template: "{{ is_state('script.calculate_adjusted_zone_durations', 'off') }}"
+      
+  #=========================================
+  #=== Adjust duration for zones in cycle 2
+  #=========================================
+  adjust_cycle2_durations:
+    sequence:
+      - service: script.calculate_adjusted_zone_durations
+        data:
+          cycle: '2'
+          zone: '1'
+      - wait_template: "{{ is_state('script.calculate_adjusted_zone_durations', 'off') }}"
+
+      - service: script.calculate_adjusted_zone_durations
+        data:
+          cycle: '2'
+          zone: '2'
+      - wait_template: "{{ is_state('script.calculate_adjusted_zone_durations', 'off') }}"
+
+
+  #========================================================
+  #=== Adjust zone duration for average weather conditions
+  #=== is passed:
+  #===   {{ cycle }}
+  #===   {{ zone }}
+  #========================================================
+  calculate_adjusted_zone_durations:
+    sequence:
+      #   Adjust for average daily temperature
+
+      #   Calculate any change in run time based on daily average temperature.
+      #   The default run time will occur at TemperatureBaseline degrees.
+      #   As the daily average temperature increases above this the run time will
+      #   also increase.
+      #   As the average temp drops below TemperatureBaseline the run time decreases.
+      #   The forumla used ‐ based on a 20 degree TemperatureBaseline would be:
+      #   (((TwoDayHighAverageTemp ‐ 20) / 20) +1) * BaseLineDuration
+      #   So: the percentage change in duration is the same as the percentage
+      #       difference between the actual temperature and the baseline temperature
+      #       i.e. a 10% increase in duration when the baseline temperataure 
+      #            is 20 degrees and the actual temperature is 22 degrees 
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.adjusted_cycle{{ cycle }}_zone{{ zone }}_duration
+          value: > 
+            {% set duration = states('input_number.cycle' + cycle + '_zone' + zone + '_duration') %}
+              {{ (((float(states.input_number.temp_high_2days.state) - float(states.input_number.temperature_baseline.state)) / float(states.input_number.temperature_baseline.state)) + 1) * float(duration) }}
+      
+      # Adjust for average daily rainfall
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.adjusted_cycle{{ cycle }}_zone{{ zone }}_duration
+          value: >
+            {% set duration = states('input_number.cycle' + cycle + '_zone' + zone + '_duration') %}
+            {% set adj_duration = states('input_number.adjusted_cycle' + cycle + '_zone' + zone + '_duration') %}
+              {{ float(adj_duration) - (float(duration) * float(states.input_number.rain_3days_ratio.state)) }}
+
+      # Make sure new duration is not less than zero
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.adjusted_cycle{{ cycle }}_zone{{ zone }}_duration
+          value: >
+            {% if states('input_number.adjusted_cycle' + cycle + '_zone' + zone + '_duration') | float < 0 %}
+              0
+            {% elif states('input_number.adjusted_cycle' + cycle + '_zone' + zone + '_duration') | float > 30 %}
+              30
+            {% else %}
+              {{ states('input_number.adjusted_cycle' + cycle + '_zone' + zone + '_duration') }}
+            {% endif %}

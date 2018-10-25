@@ -1,0 +1,218 @@
+
+#######################################################################################################################      
+#                  ___                         ___                                    ___                       ___           ___     
+#      ___        /  /\                       /  /\          ___        ___          /  /\        ___          /  /\         /__/\    
+#     /  /\      /  /:/_                     /  /:/_        /__/\      /  /\        /  /:/_      /  /\        /  /::\        \  \:\   
+#    /  /:/     /  /:/ /\    ___     ___    /  /:/ /\       \  \:\    /  /:/       /  /:/ /\    /  /:/       /  /:/\:\        \  \:\  
+#   /  /:/     /  /:/ /:/_  /__/\   /  /\  /  /:/ /:/_       \  \:\  /__/::\      /  /:/ /::\  /__/::\      /  /:/  \:\   _____\__\:\ 
+#  /  /::\    /__/:/ /:/ /\ \  \:\ /  /:/ /__/:/ /:/ /\  ___  \__\:\ \__\/\:\__  /__/:/ /:/\:\ \__\/\:\__  /__/:/ \__\:\ /__/::::::::\
+# /__/:/\:\   \  \:\/:/ /:/  \  \:\  /:/  \  \:\/:/ /:/ /__/\ |  |:|    \  \:\/\ \  \:\/:/~/:/    \  \:\/\ \  \:\ /  /:/ \  \:\~~\~~\/
+# \__\/  \:\   \  \::/ /:/    \  \:\/:/    \  \::/ /:/  \  \:\|  |:|     \__\::/  \  \::/ /:/      \__\::/  \  \:\  /:/   \  \:\  ~~~ 
+#      \  \:\   \  \:\/:/      \  \::/      \  \:\/:/    \  \:\__|:|     /__/:/    \__\/ /:/       /__/:/    \  \:\/:/     \  \:\     
+#       \__\/    \  \::/        \__\/        \  \::/      \__\::::/      \__\/       /__/:/        \__\/      \  \::/       \  \:\    
+#                 \__\/                       \__\/           ~~~~                   \__\/                     \__\/         \__\/    
+#######################################################################################################################
+
+#homeassistant:
+##   ____                 _                         _              
+##  / ___|  _   _   ___  | |_    ___    _ __ ___   (_)  ____   ___ 
+## | |     | | | | / __| | __|  / _ \  | '_ ` _ \  | | |_  /  / _ \
+## | |___  | |_| | \__ \ | |_  | (_) | | | | | | | | |  / /  |  __/
+##  \____|  \__,_| |___/  \__|  \___/  |_| |_| |_| |_| /___|  \___|
+#
+#  customize:
+#    switch.tv_e_box:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.tv_e_box_wats:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.tv_e_box_amperes:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.tv_e_box_voltagem:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.tv_e_box_hoje:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.tv_e_box_hoje_:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.tv_e_box_ontem:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.tv_e_box_ontem_:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.tv_e_box_total:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.tv_e_box_total_:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+
+#  ____               _   _            _     
+# / ___|  __      __ (_) | |_    ___  | |__  
+# \___ \  \ \ /\ / / | | | __|  / __| | '_ \ 
+#  ___) |  \ V  V /  | | | |_  | (__  | | | |
+# |____/    \_/\_/   |_|  \__|  \___| |_| |_|
+  switch:
+    - platform: mqtt
+      name: "TV e BOX"
+      state_topic: "stat/tvbox/POWER"
+      command_topic: "cmnd/tvbox/power"
+      availability_topic: "tele/tvbox/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false    
+#  ____                                      
+# / ___|    ___   _ __    ___    ___    _ __ 
+# \___ \   / _ \ | '_ \  / __|  / _ \  | '__|
+#  ___) | |  __/ | | | | \__ \ | (_) | | |   
+# |____/   \___| |_| |_| |___/  \___/  |_|     
+  sensor:
+  #watts
+    - platform: mqtt
+      name: "TV e BOX Wats"
+      state_topic: "tele/tvbox/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Power"] }}'
+      unit_of_measurement: "W"
+      icon: mdi:power-plug
+  #Amperes #
+    - platform: mqtt
+      name: "TV e BOX Amperes"
+      state_topic: "tele/tvbox/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Current"] }}'
+      unit_of_measurement: "A"
+      icon: mdi:flash-outline
+  #Voltagem
+    - platform: mqtt
+      name: "TV e BOX Voltagem"
+      state_topic: "tele/tvbox/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+      unit_of_measurement: "V"
+      icon: mdi:led-variant-on
+  #Hoje kWh 
+    - platform: mqtt
+      name: "TV e BOX Hoje"
+      state_topic: "tele/tvbox/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Today"] }}'
+      unit_of_measurement: "kWh"
+      icon: mdi:calendar-check
+  #Hoje € 
+    - platform: mqtt
+      name: "TV e BOX Hoje (€)"
+      state_topic: "tele/tvbox/SENSOR"
+      value_template: >-
+        {{states.sensor.tv_e_box_hoje.state | multiply(0.1603) | round(4)}}
+      unit_of_measurement: "€"
+      icon: mdi:cash-usd
+  #Ontem kWh
+    - platform: mqtt
+      name: "TV e BOX Ontem"
+      state_topic: "tele/tvbox/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Yesterday"] }}'
+      unit_of_measurement: "kWh"  
+      icon: mdi:calendar-clock
+  #Ontem €
+    - platform: mqtt
+      name: "TV e BOX Ontem (€)"
+      state_topic: "tele/tvbox/SENSOR"
+      value_template: >-
+        {{states.sensor.tv_e_box_ontem.state | multiply(0.1603) | round(4)}}
+      unit_of_measurement: "€"
+      icon: mdi:cash-usd
+  #Total kWh 
+    - platform: mqtt
+      name: "TV e BOX Total"
+      state_topic: "tele/tvbox/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Total"] }}'
+      unit_of_measurement: "kWh"
+      icon: mdi:calendar-multiple
+  #Total €
+    - platform: mqtt
+      name: "TV e BOX Total (€)"
+      state_topic: "tele/tvbox/SENSOR"
+      value_template: >-
+        {{states.sensor.tv_e_box_total.state | multiply(0.1603) | round(4)}}
+      unit_of_measurement: "€"
+      icon: mdi:cash-usd
+      
+
+#     _              _                                 _     _                 
+#    / \     _   _  | |_    ___    _ __ ___     __ _  | |_  (_)   ___    _ __  
+#   / _ \   | | | | | __|  / _ \  | '_ ` _ \   / _` | | __| | |  / _ \  | '_ \ 
+#  / ___ \  | |_| | | |_  | (_) | | | | | | | | (_| | | |_  | | | (_) | | | | |
+# /_/   \_\  \__,_|  \__|  \___/  |_| |_| |_|  \__,_|  \__| |_|  \___/  |_| |_|
+  automation:
+    - id: maquina_da_roupa_on_restart
+      alias: 'Atualizar maquina_da_roupa ao reiniciar HA'
+      hide_entity: True
+      trigger:
+        - platform: homeassistant
+          event: start
+      action:
+        - service: mqtt.publish
+          data:
+            topic: "cmnd/tvbox/power"
+            payload: ""
+            qos: 0
+            retain: 0
+    - id: maquina_roupa_off
+      alias: 'Máquina Roupa OFF'
+      trigger:
+        - platform: state
+          entity_id: switch.maquina_da_roupa
+          from: 'on'
+          to: 'off'
+      condition:
+        - condition: numeric_state
+          entity_id: sensor.maquina_da_roupa_wats
+          above: 0
+      action:
+        - service: notify.pushbullet
+          data_template:
+            title: "Maquina da roupa desligada"
+            message: "A máquina da roupa foi desligada e estava a {{ states.sensor.maquina_da_roupa_wats.state }} watts, {{ states.sensor.maquina_da_roupa_amperes.state }} amperes e {{ states.sensor.maquina_da_roupa_voltagem.state }} volts"
+            target:
+              - email/fernando.pereira.ano@gmail.com
+              - email/ccaattaarriinnaa@gmail.com
+        - service: script.notify_save_to_file
+          data:
+            message: '{{ as_timestamp (now()) | timestamp_custom("%d/%b/%Y %T") }} - A máquina da roupa foi desligada e estava a {{ states.sensor.maquina_da_roupa_wats.state }} watts, {{ states.sensor.maquina_da_roupa_amperes.state }} amperes e {{ states.sensor.maquina_da_roupa_voltagem.state }} volts'      
+        - service: switch.turn_on
+          entity_id: switch.maquina_da_roupa
+#   ____                                
+#  / ___|  _ __    ___    _   _   _ __  
+# | |  _  | '__|  / _ \  | | | | | '_ \ 
+# | |_| | | |    | (_) | | |_| | | |_) |
+#  \____| |_|     \___/   \__,_| | .__/ 
+#                                |_|              
+  group:
+    tvbox:
+        name: TV e BOX
+        view: no
+        entities:
+            - switch.tv_e_box
+            - sensor.tv_e_box_wats
+            - sensor.tv_e_box_amperes
+            - sensor.tv_e_box_voltagem
+            - sensor.tv_e_box_hoje
+            - sensor.tv_e_box_hoje_
+            - sensor.tv_e_box_ontem
+            - sensor.tv_e_box_ontem_
+            - sensor.tv_e_box_total
+            - sensor.tv_e_box_total_
+            
+    tv_sala:
+        name: TV Sala
+        view: no
+        entities:
+            - binary_sensor.broadlink_sala
+            - media_player.samsung
+            - media_player.meo
+            

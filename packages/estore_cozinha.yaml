@@ -1,0 +1,282 @@
+#######################################################################################################################
+#      ___                                   ___           ___           ___           ___                                                            ___          _____    
+#     /__/|        ___           ___        /  /\         /__/\         /  /\         /__/\                  _____                      ___          /__/\        /  /::\   
+#    |  |:|       /  /\         /  /\      /  /:/         \  \:\       /  /:/_        \  \:\                /  /::\                    /  /\         \  \:\      /  /:/\:\  
+#    |  |:|      /  /:/        /  /:/     /  /:/           \__\:\     /  /:/ /\        \  \:\              /  /:/\:\    ___     ___   /  /:/          \  \:\    /  /:/  \:\ 
+#  __|  |:|     /__/::\       /  /:/     /  /:/  ___   ___ /  /::\   /  /:/ /:/_   _____\__\:\            /  /:/~/::\  /__/\   /  /\ /__/::\      _____\__\:\  /__/:/ \__\:|
+# /__/\_|:|____ \__\/\:\__   /  /::\    /__/:/  /  /\ /__/\  /:/\:\ /__/:/ /:/ /\ /__/::::::::\          /__/:/ /:/\:| \  \:\ /  /:/ \__\/\:\__  /__/::::::::\ \  \:\ /  /:/
+# \  \:\/:::::/    \  \:\/\ /__/:/\:\   \  \:\ /  /:/ \  \:\/:/__\/ \  \:\/:/ /:/ \  \:\~~\~~\/          \  \:\/:/~/:/  \  \:\  /:/     \  \:\/\ \  \:\~~\~~\/  \  \:\  /:/ 
+#  \  \::/~~~~      \__\::/ \__\/  \:\   \  \:\  /:/   \  \::/       \  \::/ /:/   \  \:\  ~~~            \  \::/ /:/    \  \:\/:/       \__\::/  \  \:\  ~~~    \  \:\/:/  
+#   \  \:\          /__/:/       \  \:\   \  \:\/:/     \  \:\        \  \:\/:/     \  \:\                 \  \:\/:/      \  \::/        /__/:/    \  \:\         \  \::/   
+#    \  \:\         \__\/         \__\/    \  \::/       \  \:\        \  \::/       \  \:\                 \  \::/        \__\/         \__\/      \  \:\         \__\/    
+#     \__\/                                 \__\/         \__\/         \__\/         \__\/                  \__\/                                   \__\/                  
+#
+#######################################################################################################################
+
+
+#  ___                           _       ____                    _                        
+# |_ _|  _ __    _ __    _   _  | |_    | __ )    ___     ___   | |   ___    __ _   _ __  
+#  | |  | '_ \  | '_ \  | | | | | __|   |  _ \   / _ \   / _ \  | |  / _ \  / _` | | '_ \ 
+#  | |  | | | | | |_) | | |_| | | |_    | |_) | | (_) | | (_) | | | |  __/ | (_| | | | | |
+# |___| |_| |_| | .__/   \__,_|  \__|   |____/   \___/   \___/  |_|  \___|  \__,_| |_| |_|
+#               |_|                                                                       
+  input_boolean:
+    alterarslidercozinha:
+      name: Alterar o slider
+      initial: on
+
+#  ___                           _       _   _                       _                   
+# |_ _|  _ __    _ __    _   _  | |_    | \ | |  _   _   _ __ ___   | |__     ___   _ __ 
+#  | |  | '_ \  | '_ \  | | | | | __|   |  \| | | | | | | '_ ` _ \  | '_ \   / _ \ | '__|
+#  | |  | | | | | |_) | | |_| | | |_    | |\  | | |_| | | | | | | | | |_) | |  __/ | |   
+# |___| |_| |_| | .__/   \__,_|  \__|   |_| \_|  \__,_| |_| |_| |_| |_.__/   \___| |_|   
+#               |_|                                                                      
+  input_number:
+    aberturapersianacozinha:
+      name: Abertura
+      min: 0
+      max: 100
+      step: 1
+      unit_of_measurement: '%'
+      icon: mdi:blinds
+    aberturapersianaoldcozinha:
+      name: valor antigo de abertura
+      min: 0
+      max: 100
+      step: 1
+      unit_of_measurement: '%'
+
+#  ___                           _       _____                 _   
+# |_ _|  _ __    _ __    _   _  | |_    |_   _|   ___  __  __ | |_ 
+#  | |  | '_ \  | '_ \  | | | | | __|     | |    / _ \ \ \/ / | __|
+#  | |  | | | | | |_) | | |_| | | |_      | |   |  __/  >  <  | |_ 
+# |___| |_| |_| | .__/   \__,_|  \__|     |_|    \___| /_/\_\  \__|
+#               |_|                                                    
+  input_text:
+  #Alterar "inicial" para o valor em segundos que o estore demora a abrir desde a posição fechada e vice-versa nos input_text tempodeabertura e tempodefecho.
+    tempodeaberturacozinha:
+      name: tempo de maximo de abertura
+      initial: 10
+    tempodefechocozinha:
+      name: tempo de maximo de fecho
+      initial: 10
+    iniciofechocozinha:
+      name: iniciofecho
+    inicioaberturacozinha:
+      name: inicioabertura
+
+#  ____    _                                                                                  
+# | __ )  (_)  _ __     __ _   _ __   _   _     ___    ___   _ __    ___    ___    _ __   ___ 
+# |  _ \  | | | '_ \   / _` | | '__| | | | |   / __|  / _ \ | '_ \  / __|  / _ \  | '__| / __|
+# | |_) | | | | | | | | (_| | | |    | |_| |   \__ \ |  __/ | | | | \__ \ | (_) | | |    \__ \
+# |____/  |_| |_| |_|  \__,_| |_|     \__, |   |___/  \___| |_| |_| |___/  \___/  |_|    |___/
+#                                     |___/                                                   
+  binary_sensor:
+    - platform: mqtt
+      name: rele 1 Estore cozinha
+      state_topic: "stat/estorecozinha/POWER1"
+      payload_on: "ON"
+      payload_off: "OFF"
+      
+    - platform: mqtt
+      name: rele 2 Estore cozinha
+      state_topic: "stat/estorecozinha/POWER2"
+      payload_on: "ON"
+      payload_off: "OFF"
+
+#   ____                               
+#  / ___|   ___   __   __   ___   _ __ 
+# | |      / _ \  \ \ / /  / _ \ | '__|
+# | |___  | (_) |  \ V /  |  __/ | |   
+#  \____|  \___/    \_/    \___| |_|   
+#                                                                                                          
+  cover:
+    - platform: template
+      covers:
+        persianacozinha:
+          friendly_name: "Persiana"
+          position_template: '{{ states.input_number.aberturapersianacozinha.state }}'
+          open_cover:
+            - service: mqtt.publish
+              data:
+                topic: 'cmnd/estorecozinha/POWER1'
+                payload: 'ON'
+          close_cover:
+            - service: mqtt.publish
+              data:
+                topic: 'cmnd/estorecozinha/POWER2'
+                payload: 'ON'
+          stop_cover:
+            - service: mqtt.publish
+              data:
+                topic: 'cmnd/estorecozinha/Backlog'
+                payload: 'POWER1 OFF; POWER2 OFF'
+
+
+
+#     _              _                                 _     _                 
+#    / \     _   _  | |_    ___    _ __ ___     __ _  | |_  (_)   ___    _ __  
+#   / _ \   | | | | | __|  / _ \  | '_ ` _ \   / _` | | __| | |  / _ \  | '_ \ 
+#  / ___ \  | |_| | | |_  | (_) | | | | | | | | (_| | | |_  | | | (_) | | | | |
+# /_/   \_\  \__,_|  \__|  \___/  |_| |_| |_|  \__,_|  \__| |_|  \___/  |_| |_|
+  automation:
+    - id: iniciofechoEstorecozinha
+      alias: começou a fechar
+      trigger:
+      - platform: state
+        entity_id: binary_sensor.rele_2_Estore_cozinha
+        to: 'on'
+      action:
+        service: input_text.set_value
+        data_template:
+          entity_id: input_text.iniciofechocozinha
+          value: '{{ now() }}'
+    #######################################################################      
+    - id: fimfechoEstorecozinha
+      alias: parou de fechar
+      trigger:
+      - platform: state
+        entity_id: binary_sensor.rele_2_Estore_cozinha
+        to: 'off'
+      condition:
+      - condition: state
+        entity_id: 'input_boolean.alterarslidercozinha'
+        state: 'on'
+      action:
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.aberturapersianaoldcozinha
+          value: >-
+            {% if (states.input_number.aberturapersianacozinha.state)|int - ((as_timestamp(now()) - (as_timestamp(states.input_text.iniciofechocozinha.state))|float|round(2))*100/(states.input_text.tempodefechocozinha.state|int))|int < 4 %}
+              0
+            {% else %}
+              {{ (states.input_number.aberturapersianacozinha.state)|int - ((as_timestamp(now()) - (as_timestamp(states.input_text.iniciofechocozinha.state))|float|round(2))*100/(states.input_text.tempodefechocozinha.state|int))|int }}
+            {% endif %}
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.aberturapersianacozinha
+          value: '{{ states.input_number.aberturapersianaoldcozinha.state }}'
+      - service: script.notify_save_to_file
+        data:
+          message: '{{ as_timestamp (now()) | timestamp_custom("%d/%b/%Y %T") }} - Parou de fechar - vou definir o slider com {{ states.input_number.aberturapersianaoldcozinha.state }}'
+    ##########################################################################      
+    - id: inicioaberturaEstorecozinha
+      alias: começou a abrir
+      trigger:
+      - platform: state
+        entity_id: binary_sensor.rele_1_Estore_cozinha
+        to: 'on'
+      action:
+        service: input_text.set_value
+        data_template:
+          entity_id: input_text.inicioaberturacozinha
+          value: '{{ now() }}'
+    ##########################################################################      
+    - id: fimaberturaEstorecozinha
+      alias: parou de abrir
+      trigger:
+      - platform: state
+        entity_id: binary_sensor.rele_1_Estore_cozinha
+        to: 'off'
+      condition:
+      - condition: state
+        entity_id: 'input_boolean.alterarslidercozinha'
+        state: 'on'
+      action:
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.aberturapersianaoldcozinha
+          value: >-
+            {% if (states.input_number.aberturapersianacozinha.state)|int + ((as_timestamp(now()) - (as_timestamp(states.input_text.inicioaberturacozinha.state))|float|round(2))*100/(states.input_text.tempodeaberturacozinha.state|int))|int > 96 %}
+              100
+            {% else %}
+              {{ (states.input_number.aberturapersianacozinha.state)|int + ((as_timestamp(now()) - (as_timestamp(states.input_text.inicioaberturacozinha.state))|float|round(2))*100/(states.input_text.tempodeaberturacozinha.state|int))|int }}
+            {% endif %}
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.aberturapersianacozinha
+          value: '{{ states.input_number.aberturapersianaoldcozinha.state }}'
+      - service: script.notify_save_to_file
+        data:
+          message: '{{ as_timestamp (now()) | timestamp_custom("%d/%b/%Y %T") }} - Parou de abrir - vou definir o slider com {{ states.input_number.aberturapersianaoldcozinha.state }}'
+
+    ######################################################################################3      
+    - id: aberturapelosliderEstorecozinha
+      alias: Abertura pelo slider
+      trigger:
+        platform: state
+        entity_id: input_number.aberturapersianacozinha
+      condition:
+      - condition: template
+        value_template: '{{ states.input_number.aberturapersianacozinha.state|int > states.input_number.aberturapersianaoldcozinha.state|int }}'
+      action:
+      - service: input_boolean.turn_off
+        data:
+          entity_id: input_boolean.alterarslidercozinha
+      - service: mqtt.publish
+        data:
+          topic: 'cmnd/estorecozinha/Backlog'
+          payload_template: "POWER1 ON; delay {% if is_state('input_number.aberturapersianacozinha', '100.0') %} {{ (((states.input_number.aberturapersianacozinha.state|int - states.input_number.aberturapersianaoldcozinha.state|int)*(states.input_text.tempodeaberturacozinha.state|float)/100)|round(1)*10)|round(0) + 20 }} {% else %}
+    {{ (((states.input_number.aberturapersianacozinha.state|int - states.input_number.aberturapersianaoldcozinha.state|int)*(states.input_text.tempodeaberturacozinha.state|float)/100)|round(1)*10)|round(0) }} {% endif %}; POWER1 OFF"
+      - delay:
+          milliseconds: 800
+      - wait_template: "{{ is_state('binary_sensor.rele_1_Estore_cozinha', 'off') }}"
+      - service: input_boolean.turn_on
+        data:
+          entity_id: input_boolean.alterarslidercozinha
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.aberturapersianaoldcozinha
+          value: '{{ states.input_number.aberturapersianacozinha.state }}'
+    #########################################################################################      
+    - id: fechopelosliderEstorecozinha
+      alias: Fecho pelo slider
+      trigger:
+        platform: state
+        entity_id: input_number.aberturapersianacozinha
+      condition:
+      - condition: template
+        value_template: '{{ states.input_number.aberturapersianacozinha.state|int < states.input_number.aberturapersianaoldcozinha.state|int }}'
+      action:
+      - service: input_boolean.turn_off
+        data:
+          entity_id: input_boolean.alterarslidercozinha
+      - service: mqtt.publish
+        data:
+          topic: 'cmnd/estorecozinha/Backlog'
+          payload_template: "POWER2 ON; delay {% if is_state('input_number.aberturapersianacozinha', '0.0') %} {{ (((states.input_number.aberturapersianaoldcozinha.state|int - states.input_number.aberturapersianacozinha.state|int)*(states.input_text.tempodefechocozinha.state|float)/100)|round(1)*10)|round(0) + 20 }} {% else %}
+    {{ (((states.input_number.aberturapersianaoldcozinha.state|int - states.input_number.aberturapersianacozinha.state|int)*(states.input_text.tempodefechocozinha.state|float)/100)|round(1)*10)|round(0) }} {% endif %}; POWER2 OFF"
+      - delay:
+          milliseconds: 800
+      - wait_template: "{{ is_state('binary_sensor.rele_2_Estore_cozinha', 'off') }}"
+      - service: input_boolean.turn_on
+        data:
+          entity_id: input_boolean.alterarslidercozinha
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.aberturapersianaoldcozinha
+          value: '{{ states.input_number.aberturapersianacozinha.state }}'      
+
+            
+#   ____                                
+#  / ___|  _ __    ___    _   _   _ __  
+# | |  _  | '__|  / _ \  | | | | | '_ \ 
+# | |_| | | |    | (_) | | |_| | | |_) |
+#  \____| |_|     \___/   \__,_| | .__/ 
+#                                |_|    
+  group:
+    estorescozinha:
+      control: hidden
+      name: Cozinha
+      entities:
+        - input_number.aberturapersianacozinha
+        - cover.persianacozinha
+#        - input_boolean.alterarslidercozinha
+#        - input_number.aberturapersianaoldcozinha
+#        - input_text.tempodeaberturacozinha
+#        - input_text.tempodefechocozinha
+#        - input_text.iniciofechocozinha
+#        - input_text.inicioaberturacozinha
+#        - binary_sensor.rele_1_estore_cozinha
+#        - binary_sensor.rele_2_estore_cozinha
+ 

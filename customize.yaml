@@ -1,0 +1,898 @@
+
+#######################################################################################################################
+#  _   _           _     _    __   _                  _     _                       
+# | \ | |   ___   | |_  (_)  / _| (_)   ___    __ _  | |_  (_)   ___    _ __    ___ 
+# |  \| |  / _ \  | __| | | | |_  | |  / __|  / _` | | __| | |  / _ \  | '_ \  / __|
+# | |\  | | (_) | | |_  | | |  _| | | | (__  | (_| | | |_  | | | (_) | | | | | \__ \
+# |_| \_|  \___/   \__| |_| |_|   |_|  \___|  \__,_|  \__| |_|  \___/  |_| |_| |___/
+#                                                                                       
+#######################################################################################################################
+  sensor.notificacao_01:
+    icon: mdi:bell-ring
+    friendly_name: '01'
+    
+  sensor.notificacao_02:
+    icon: mdi:bell
+    friendly_name: '02'
+    
+  sensor.notificacao_03:
+    icon: mdi:bell
+    friendly_name: '03'
+    
+  sensor.notificacao_04:
+    icon: mdi:bell
+    friendly_name: '04'
+    
+  sensor.notificacao_05:
+    icon: mdi:bell
+    friendly_name: '05'
+    
+  sensor.notificacao_06:
+    icon: mdi:bell
+    friendly_name: '06'
+    
+  sensor.notificacao_07:
+    icon: mdi:bell
+    friendly_name: '07'
+    
+  sensor.notificacao_08:
+    icon: mdi:bell
+    friendly_name: '08'
+    
+  sensor.notificacao_09:
+    icon: mdi:bell
+    friendly_name: '09'
+    
+  sensor.notificacao_10:
+    icon: mdi:bell
+    friendly_name: '10'
+
+#######################################################################################################################
+#  ____                   _      ____    _            
+# |  _ \    __ _   _ __  | | __ / ___|  | | __  _   _ 
+# | | | |  / _` | | '__| | |/ / \___ \  | |/ / | | | |
+# | |_| | | (_| | | |    |   <   ___) | |   <  | |_| |
+# |____/   \__,_| |_|    |_|\_\ |____/  |_|\_\  \__, |
+#                                               |___/ 
+#######################################################################################################################
+                                               
+  sensor.dark_sky_temperature:
+    friendly_name: "Temperatura na Rua"
+    icon: mdi:thermometer
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.dark_sky_summary:
+    friendly_name: "Céu"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.dark_sky_humidity:
+    friendly_name: "Humididade na Rua"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.dark_sky_precip_probability:
+    friendly_name: "Probabilidade de chover"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.dark_sky_daily_high_temperature:
+    friendly_name: "Temperatura Máxima"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.dark_sky_daily_low_temperature:
+    friendly_name: "Temperatura Mínima"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.dark_sky_hourly_summary:
+    friendly_name: "Previsão de hoje"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.dark_sky_daily_summary:
+    friendly_name: "Previsão semanal"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+
+  binary_sensor.protection_window:
+    friendly_name: "Janela de proteção"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+  
+  sensor.current_ozone_level:
+    friendly_name: "Nível de ozono"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+  
+  sensor.current_uv_index:
+    friendly_name: "Indíce UV atual"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+  
+  sensor.current_uv_level:
+    friendly_name: "Nível UV atual"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+  
+  sensor.max_uv_index:
+    friendly_name: "Indíce UV max"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+  
+  sensor.skin_type_1_safe_exposure_time:
+    friendly_name: "Pele tipo 1 - exposição máxima"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+  
+  sensor.skin_type_2_safe_exposure_time:
+    friendly_name: "Pele tipo 2 - exposição máxima"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+  
+  sensor.skin_type_3_safe_exposure_time:
+    friendly_name: "Pele tipo 3 - exposição máxima"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+
+  sensor.skin_type_4_safe_exposure_time:
+    friendly_name: "Pele tipo 4 - exposição máxima"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+  
+  sensor.skin_type_5_safe_exposure_time:
+    friendly_name: "Pele tipo 5 - exposição máxima"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+  
+  sensor.skin_type_6_safe_exposure_time:
+    friendly_name: "Pele tipo 6 - exposição máxima"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+#######################################################################################################################
+#  _       _           _       _         
+# | |     (_)   __ _  | |__   | |_   ___ 
+# | |     | |  / _` | | '_ \  | __| / __|
+# | |___  | | | (_| | | | | | | |_  \__ \
+# |_____| |_|  \__, | |_| |_|  \__| |___/
+#              |___/                     
+#######################################################################################################################
+
+                    
+            #  __  __                                         _       _         
+            # |  \/  |   __ _   _ __    __ _    __ _   _ __  (_)   __| |   __ _ 
+            # | |\/| |  / _` | | '__|  / _` |  / _` | | '__| | |  / _` |  / _` |
+            # | |  | | | (_| | | |    | (_| | | (_| | | |    | | | (_| | | (_| |
+            # |_|  |_|  \__,_| |_|     \__, |  \__,_| |_|    |_|  \__,_|  \__,_|
+            #                          |___/                                                                  
+                    
+  light.quarto_margarida_geral:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    friendly_name: "Geral"
+    
+  light.quarto_margarida_geral_simples:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    friendly_name: "Geral Simples"
+    
+  light.quarto_margarida_candeeiro_aviao:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    friendly_name: "Avião"
+    
+  light.quarto_margarida_wc:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    friendly_name: "WC"
+    
+#######################################################################################################################    
+#  ____               _   _            _           
+# / ___|  __      __ (_) | |_    ___  | |__    ___ 
+# \___ \  \ \ /\ / / | | | __|  / __| | '_ \  / __|
+#  ___) |  \ V  V /  | | | |_  | (__  | | | | \__ \
+# |____/    \_/\_/   |_|  \__|  \___| |_| |_| |___/
+#                                                  
+#######################################################################################################################    
+
+    
+  
+ 
+  
+#######################################################################################################################
+#  ____                                            
+# / ___|    ___   _ __    ___    ___    _ __   ___ 
+# \___ \   / _ \ | '_ \  / __|  / _ \  | '__| / __|
+#  ___) | |  __/ | | | | \__ \ | (_) | | |    \__ \
+# |____/   \___| |_| |_| |___/  \___/  |_|    |___/
+#                                                  
+#######################################################################################################################
+
+            #  ____    _     ____    _             _          
+            # |  _ \  (_)   / ___|  | |_    __ _  | |_    ___ 
+            # | |_) | | |   \___ \  | __|  / _` | | __|  / _ \
+            # |  __/  | |    ___) | | |_  | (_| | | |_  |  __/
+            # |_|     |_|   |____/   \__|  \__,_|  \__|  \___|
+                                                 
+                                                 
+  sensor.disk_free_:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.disk_use_percent_:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.last_boot:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.memory_free:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.memory_use_percent:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.network_in_eth0:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.network_out_eth0:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.processor_use:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.since_last_boot:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+            #   ____                           _            _                                   _ 
+            #  / ___|   ___     ___     __ _  | |   ___    | |_   _ __    __ _  __   __   ___  | |
+            # | |  _   / _ \   / _ \   / _` | | |  / _ \   | __| | '__|  / _` | \ \ / /  / _ \ | |
+            # | |_| | | (_) | | (_) | | (_| | | | |  __/   | |_  | |    | (_| |  \ V /  |  __/ | |
+            #  \____|  \___/   \___/   \__, | |_|  \___|    \__| |_|     \__,_|   \_/    \___| |_|
+            #                          |___/                                                        
+  sensor.de_casa_a_primavera:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.de_casa_a_dgrs:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.da_primavera_a_casa:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.do_jardim_de_infancia_a_casa:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+
+            #  ____                   _                   _                           _                  
+            # |  _ \    ___  __   __ (_)   ___    ___    | |_   _ __    __ _    ___  | | __   ___   _ __ 
+            # | | | |  / _ \ \ \ / / | |  / __|  / _ \   | __| | '__|  / _` |  / __| | |/ /  / _ \ | '__|
+            # | |_| | |  __/  \ V /  | | | (__  |  __/   | |_  | |    | (_| | | (__  |   <  |  __/ | |   
+            # |____/   \___|   \_/   |_|  \___|  \___|    \__| |_|     \__,_|  \___| |_|\_\  \___| |_|   
+                                                                                                
+  device_tracker.fernando:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  device_tracker.catarina:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+  
+            #  ____    _          _     _           _                       
+            # | __ )  (_)  _ __  | |_  | |__     __| |   __ _   _   _   ___ 
+            # |  _ \  | | | '__| | __| | '_ \   / _` |  / _` | | | | | / __|
+            # | |_) | | | | |    | |_  | | | | | (_| | | (_| | | |_| | \__ \
+            # |____/  |_| |_|     \__| |_| |_|  \__,_|  \__,_|  \__, | |___/
+            #                                                   |___/           
+  sensor.catarina_birthday_days:
+    icon: mdi:cake
+    
+  sensor.fernando_birthday_days:
+    icon: mdi:cake
+    
+  sensor.margarida_birthday_days:
+    icon: mdi:cake
+    
+  sensor.ines_birthday_days:
+    icon: mdi:cake
+
+#######################################################################################################################    
+#     _       ____     _       _           _                     ____                              
+#    / \     / ___|   | |     (_) __   __ (_)  _ __     __ _    |  _ \    ___     ___    _ __ ___  
+#   / _ \   | |       | |     | | \ \ / / | | | '_ \   / _` |   | |_) |  / _ \   / _ \  | '_ ` _ \ 
+#  / ___ \  | |___    | |___  | |  \ V /  | | | | | | | (_| |   |  _ <  | (_) | | (_) | | | | | | |
+# /_/   \_\  \____|   |_____| |_|   \_/   |_| |_| |_|  \__, |   |_| \_\  \___/   \___/  |_| |_| |_|
+#                                                      |___/                                       
+#######################################################################################################################
+  switch.ac_sala:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  switch.ac_sala_onoff:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.ac_sala_wats:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.ac_sala_amperes:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.ac_sala_voltagem:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.ac_sala_hoje:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.ac_sala_hoje_:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.ac_sala_ontem:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.ac_sala_ontem_:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.ac_sala_total:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.ac_sala_total_:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  climate.ac_sala:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+#######################################################################################################################    
+#  _____                                          
+# |  ___|  _ __    ___    ___   ____   ___   _ __ 
+# | |_    | '__|  / _ \  / _ \ |_  /  / _ \ | '__|
+# |  _|   | |    |  __/ |  __/  / /  |  __/ | |   
+# |_|     |_|     \___|  \___| /___|  \___| |_|   
+#                                                 
+#######################################################################################################################
+
+  switch.congelador:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.congelador_wats:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.congelador_amperes:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.congelador_voltagem:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.congelador_hoje:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.congelador_hoje_:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.congelador_ontem:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.congelador_ontem_:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.congelador_total:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.congelador_total_:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true 
+
+#######################################################################################################################
+#  _____                  _     _            __         
+# |  ___|  _   _    ___  | |   (_)  _ __    / _|   ___  
+# | |_    | | | |  / _ \ | |   | | | '_ \  | |_   / _ \ 
+# |  _|   | |_| | |  __/ | |   | | | | | | |  _| | (_) |
+# |_|      \__,_|  \___| |_|   |_| |_| |_| |_|    \___/ 
+#######################################################################################################################
+
+  sensor.fuel_184681_gasoleo_especial:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.fuel_184681_gasoleo_simples:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.fuel_184681_gasolina_especial_95:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.fuel_184681_gasolina_simples_95:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.fuel_181715_gasoleo_especial:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.fuel_181715_gasoleo_simples:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.fuel_181715_gasolina_especial_95:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.fuel_181715_gasolina_simples_95:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.fuel_166014_gasoleo_especial:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.fuel_166014_gasoleo_simples:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.fuel_166014_gasolina_especial_95:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.fuel_166014_gasolina_simples_95:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.fuel_160933_gasoleo_especial:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.fuel_160933_gasoleo_simples:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.fuel_160933_gasolina_especial_95:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.fuel_160933_gasolina_simples_95:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true   
+
+#######################################################################################################################
+#  ___           _                                  _       ____                              _     _____                _   
+# |_ _|  _ __   | |_    ___   _ __   _ __     ___  | |_    / ___|   _ __     ___    ___    __| |   |_   _|   ___   ___  | |_ 
+#  | |  | '_ \  | __|  / _ \ | '__| | '_ \   / _ \ | __|   \___ \  | '_ \   / _ \  / _ \  / _` |     | |    / _ \ / __| | __|
+#  | |  | | | | | |_  |  __/ | |    | | | | |  __/ | |_     ___) | | |_) | |  __/ |  __/ | (_| |     | |   |  __/ \__ \ | |_ 
+# |___| |_| |_|  \__|  \___| |_|    |_| |_|  \___|  \__|   |____/  | .__/   \___|  \___|  \__,_|     |_|    \___| |___/  \__|
+#                                                                  |_|                                                       
+#######################################################################################################################
+
+  input_boolean.executeinternettest:
+    friendly_name: "Atualizar"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    icon: mdi:cloud-sync
+    
+  sensor.speedtest_download:
+    friendly_name: "Download"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    icon: mdi:cloud-download
+    
+  sensor.speedtest_upload:
+    friendly_name: "Upload"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    icon: mdi:cloud-upload
+    
+  sensor.speedtest_ping:
+    friendly_name: "Ping"
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    icon: mdi:mixcloud    
+    
+#######################################################################################################################
+#  ____    _         _                                _                   
+# |  _ \  (_)  ___  | |__   __      __   __ _   ___  | |__     ___   _ __ 
+# | | | | | | / __| | '_ \  \ \ /\ / /  / _` | / __| | '_ \   / _ \ | '__|
+# | |_| | | | \__ \ | | | |  \ V  V /  | (_| | \__ \ | | | | |  __/ | |   
+# |____/  |_| |___/ |_| |_|   \_/\_/    \__,_| |___/ |_| |_|  \___| |_|   
+#                                                                         
+#######################################################################################################################    
+
+  switch.maquina_da_loica:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_da_loica_wats:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_da_loica_amperes:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_da_loica_voltagem:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_da_loica_hoje:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_da_loica_hoje_:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_da_loica_ontem:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_da_loica_ontem_:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_da_loica_total:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_da_loica_total_:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+
+#######################################################################################################################         
+# __        __                _       _                                                _       _                
+# \ \      / /   __ _   ___  | |__   (_)  _ __     __ _     _ __ ___     __ _    ___  | |__   (_)  _ __     ___ 
+#  \ \ /\ / /   / _` | / __| | '_ \  | | | '_ \   / _` |   | '_ ` _ \   / _` |  / __| | '_ \  | | | '_ \   / _ \
+#   \ V  V /   | (_| | \__ \ | | | | | | | | | | | (_| |   | | | | | | | (_| | | (__  | | | | | | | | | | |  __/
+#    \_/\_/     \__,_| |___/ |_| |_| |_| |_| |_|  \__, |   |_| |_| |_|  \__,_|  \___| |_| |_| |_| |_| |_|  \___|
+#                                                 |___/                                                         
+#######################################################################################################################   
+
+  switch.maquina_da_roupa:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_da_roupa_wats:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_da_roupa_amperes:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_da_roupa_voltagem:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_da_roupa_hoje:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_da_roupa_hoje_:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_da_roupa_ontem:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_da_roupa_ontem_:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_da_roupa_total:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_da_roupa_total_:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+
+#######################################################################################################################         
+#  ____                   _                                                _       _                
+# |  _ \   _ __   _   _  (_)  _ __     __ _     _ __ ___     __ _    ___  | |__   (_)  _ __     ___ 
+# | | | | | '__| | | | | | | | '_ \   / _` |   | '_ ` _ \   / _` |  / __| | '_ \  | | | '_ \   / _ \
+# | |_| | | |    | |_| | | | | | | | | (_| |   | | | | | | | (_| | | (__  | | | | | | | | | | |  __/
+# |____/  |_|     \__, | |_| |_| |_|  \__, |   |_| |_| |_|  \__,_|  \___| |_| |_| |_| |_| |_|  \___|
+#                 |___/               |___/                                                         
+#######################################################################################################################     
+  switch.maquina_de_secar:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_de_secar_wats:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_de_secar_amperes:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_de_secar_voltagem:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_de_secar_hoje:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_de_secar_hoje_:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_de_secar_ontem:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_de_secar_ontem_:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_de_secar_total:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.maquina_de_secar_total_:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+#######################################################################################################################   
+#  _____                                                    _                         
+# |_   _|   ___   _ __ ___    _ __     ___   _ __    __ _  | |_   _   _   _ __    ___ 
+#   | |    / _ \ | '_ ` _ \  | '_ \   / _ \ | '__|  / _` | | __| | | | | | '__|  / _ \
+#   | |   |  __/ | | | | | | | |_) | |  __/ | |    | (_| | | |_  | |_| | | |    |  __/
+#   |_|    \___| |_| |_| |_| | .__/   \___| |_|     \__,_|  \__|  \__,_| |_|     \___|
+#                            |_|                                                      
+#######################################################################################################################   
+  
+  sensor.piso_0_temperature:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    friendly_name: 'Temperatura piso 0'
+    
+  sensor.piso_0_humidity:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    friendly_name: 'Humidade piso 0'
+    icon: 'mdi:water-percent'
+    
+  sensor.piso_0_battery:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    friendly_name: 'Bateria piso 0'
+    icon: 'mdi:battery-charging-wireless-50'
+    
+  sensor.piso_1_temperature:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    friendly_name: 'Temperatura piso 1'
+    
+  sensor.piso_1_humidity:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    friendly_name: 'Humidade piso 1'
+    icon: 'mdi:water-percent'
+    
+  sensor.piso_1_battery:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    friendly_name: 'Bateria piso 1'
+    icon: 'mdi:battery-charging-wireless-50'
+    
+  sensor.temperatura_quarto:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.humidade_quarto:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.pressao_quarto:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.bateria_quarto:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.forca_sinal_quarto:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.voltagem_sensor_quarto:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  
+  sensor.temperatura_margarida:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.humidade_margarida:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.pressao_margarida:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.bateria_margarida:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.forca_sinal_margarida:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.voltagem_sensor_margarida:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  
+  sensor.temperatura_ines:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.humidade_ines:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.pressao_ines:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.bateria_ines:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.forca_sinal_ines:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.voltagem_sensor_ines:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+#######################################################################################################################   
+#  _____          _                  _         _                 
+# |_   _|   ___  | |   ___  __   __ (_)  ___  (_)   ___    _ __  
+#   | |    / _ \ | |  / _ \ \ \ / / | | / __| | |  / _ \  | '_ \ 
+#   | |   |  __/ | | |  __/  \ V /  | | \__ \ | | | (_) | | | | |
+#   |_|    \___| |_|  \___|   \_/   |_| |___/ |_|  \___/  |_| |_|
+#                                                                
+#######################################################################################################################    
+    
+  switch.tv_e_box:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.tv_e_box_wats:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.tv_e_box_amperes:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.tv_e_box_voltagem:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.tv_e_box_hoje:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.tv_e_box_hoje_:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.tv_e_box_ontem:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.tv_e_box_ontem_:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.tv_e_box_total:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.tv_e_box_total_:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+#######################################################################################################################      
+#  __  __           _     _                                                                   
+# |  \/  |   ___   | |_  (_)   ___    _ __      ___    ___   _ __    ___    ___    _ __   ___ 
+# | |\/| |  / _ \  | __| | |  / _ \  | '_ \    / __|  / _ \ | '_ \  / __|  / _ \  | '__| / __|
+# | |  | | | (_) | | |_  | | | (_) | | | | |   \__ \ |  __/ | | | | \__ \ | (_) | | |    \__ \
+# |_|  |_|  \___/   \__| |_|  \___/  |_| |_|   |___/  \___| |_| |_| |___/  \___/  |_|    |___/
+#                                                                                             
+#######################################################################################################################  
+
+  binary_sensor.movimento_sala:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.movimento_sala:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.bateria_movimento_sala:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  binary_sensor.movimento_piso1:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.movimento_piso1:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.bateria_movimento_piso1:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+
+#######################################################################################################################      
+#  ____                                                                           
+# |  _ \    ___     ___    _ __     ___    ___   _ __    ___    ___    _ __   ___ 
+# | | | |  / _ \   / _ \  | '__|   / __|  / _ \ | '_ \  / __|  / _ \  | '__| / __|
+# | |_| | | (_) | | (_) | | |      \__ \ |  __/ | | | | \__ \ | (_) | | |    \__ \
+# |____/   \___/   \___/  |_|      |___/  \___| |_| |_| |___/  \___/  |_|    |___/
+#
+#######################################################################################################################   
+
+  binary_sensor.porta_rua:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.bateria_porta_rua:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  binary_sensor.porta_garagem:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.bateria_porta_garagem:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  binary_sensor.porta_sala:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    
+  sensor.bateria_porta_sala:
+    custom_ui_state_card: state-card-custom-ui
+    show_last_changed: true
+    

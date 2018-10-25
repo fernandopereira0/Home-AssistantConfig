@@ -21,42 +21,50 @@
             - sensor.network_out_eth0
             - sensor.processor_use
             - sensor.since_last_boot
-    piso0_temp:
-        name: Dados do Piso 0
-        view: no
-        entities:
-            - sensor.piso_0_temperature
-            - sensor.piso_0_humidity
-            - sensor.piso_0_battery
-    piso1_temp:
-        name: Dados do Piso 1
-        view: no
-        entities:
-            - sensor.piso_1_temperature
-            - sensor.piso_1_humidity
-            - sensor.piso_1_battery
     
-    maquinaloica:
-        name: Máquina da loiça
-        view: no
+    meteo:
+        name: Previsão meteorológica
+        control: hidden
         entities:
-            - switch.maquina_da_loica
-            - sensor.maquina_da_loica_wats
-            - sensor.maquina_da_loica_amperes
-            - sensor.maquina_da_loica_voltagem
-            - sensor.maquina_da_loica_hoje
-            - sensor.maquina_da_loica_hoje_
-            - sensor.maquina_da_loica_ontem
-            - sensor.maquina_da_loica_ontem_
-            - sensor.maquina_da_loica_total
-            - sensor.maquina_da_loica_total_
+            - sensor.dark_sky_summary
+            - sensor.dark_sky_temperature
+            - sensor.dark_sky_humidity
+            - sensor.dark_sky_daily_high_temperature
+            - sensor.dark_sky_daily_low_temperature
+            - sensor.dark_sky_daily_summary
+            - sensor.dark_sky_hourly_summary
+            - sensor.dark_sky_precip_probability
     
-    luzes_piso1:
-        name: Luzes do Piso 1
-        view: no
+    open_uv:
+        name: Ultra-Violeta
+        control: hidden
         entities:
-            - light.escadas
-            - light.corredor_piso_1
+            - binary_sensor.protection_window
+            - sensor.current_ozone_level
+            - sensor.current_uv_index
+            - sensor.current_uv_level
+            - sensor.max_uv_index
+            - sensor.skin_type_1_safe_exposure_time
+            - sensor.skin_type_2_safe_exposure_time
+            - sensor.skin_type_3_safe_exposure_time
+            - sensor.skin_type_4_safe_exposure_time
+            - sensor.skin_type_5_safe_exposure_time
+            - sensor.skin_type_6_safe_exposure_time
+
+    grp_last_notifications:
+        name: Últimas Notificações
+        control: hidden
+        entities:
+            - sensor.notificacao_01
+            - sensor.notificacao_02
+            - sensor.notificacao_03
+            - sensor.notificacao_04
+            - sensor.notificacao_05
+            - sensor.notificacao_06
+            - sensor.notificacao_07
+            - sensor.notificacao_08
+            - sensor.notificacao_09
+            - sensor.notificacao_10
             
     familia:
         name: Familia
@@ -68,14 +76,97 @@
             - sensor.de_casa_a_dgrs
             - sensor.da_primavera_a_casa
             - sensor.do_jardim_de_infancia_a_casa
-            - camera.localizacao_do_fernando
     
-    ac_sala:
-        name: AC da Sala
+    birthdays:
+        name: Aniversários
         view: no
         entities:
-            - climate.ac_sala
-            - switch.ac_sala_ecomode
+            - sensor.catarina_birthday_days
+            - sensor.fernando_birthday_days
+            - sensor.margarida_birthday_days
+            - sensor.ines_birthday_days
+            
+    ac_quarto_principal:
+        name: AC do quarto
+        view: no
+        entities:
+            - climate.ac_quarto_principal
+            - binary_sensor.broadlink_quarto
+
+    ac_margarida:
+        name: AC da Margarida
+        view: no
+        entities:
+            - climate.ac_quarto_margarida
+            - binary_sensor.broadlink_margarida
+
+    ac_ines:
+        name: AC da Inês
+        view: no
+        entities:
+            - climate.ac_quarto_ines
+            - binary_sensor.broadlink_ines
+    
+    iss:
+        control: hidden
+        name: Estação espacial internacional
+        entities:
+            - camera.iss
+    
+    broadlinks_status:
+        control: hidden
+        name: Estado dos broadlinks
+        entities:
+            - binary_sensor.broadlink_sala
+            - binary_sensor.broadlink_quarto
+            - binary_sensor.broadlink_margarida
+            - binary_sensor.broadlink_ines
+          
+    cameras_status:
+        control: hidden
+        name: Estado das cameras
+        entities:
+            - binary_sensor.camera_frente
+    
+    bateries_status:
+        control: hidden
+        name: Baterias dos sensores
+        entities:
+            - sensor.bateria_porta_rua
+            - sensor.bateria_porta_sala
+            - sensor.bateria_porta_garagem
+            - sensor.bateria_movimento_piso1
+            - sensor.bateria_movimento_sala
+            - sensor.piso_0_battery
+            - sensor.piso_1_battery
+            - sensor.bateria_quarto
+            - sensor.voltagem_sensor_quarto
+            - sensor.bateria_margarida
+            - sensor.voltagem_sensor_margarida
+            - sensor.bateria_ines
+            - sensor.voltagem_sensor_ines
+            
+            
+    notifications_enablers:
+        control: hidden
+        name: Notificações ativas
+        entities:
+            - input_boolean.notify_porta_rua_aberta
+            - input_boolean.notify_porta_sala_aberta
+            - input_boolean.notify_porta_garagem_aberta
+            - input_boolean.notify_movimento_piso1
+            - input_boolean.notify_movimento_sala
+            - input_boolean.notify_catarina_home
+            - input_boolean.notify_garbage_message
+            - input_boolean.notify_temp_piso0
+            - input_boolean.notify_temp_piso1
+            - input_boolean.notify_temp_quarto
+            - input_boolean.notify_temp_margarida
+            - input_boolean.notify_temp_ines
+            - input_number.temp_baixa_piso0
+            - input_number.temp_alta_piso0
+            - input_number.temp_baixa_piso1
+            - input_number.temp_alta_piso1
             
 #######################################################################################################################
 # __     __  _                         
@@ -92,47 +183,161 @@
         entities:
             - sensor.certificado_ssl
             - sun.sun
+            - group.familia
+            - group.birthdays
+            - camera.rua
+            #- camera.localizacao_do_fernando
+    
+    meteo_all:
+        view: yes
+        icon: mdi:weather-pouring
+        entities:
+            - sensor.meteorologia_symbol
+            - sun.sun
             - weather.guimaraes
+            - group.meteo
+            - group.open_uv
             - camera.satelite_portugalespanha
             - camera.satelite_infrared_portugalespanha
-            - group.familia
+            #- group.iss
+    
     lights:
         view: yes
         icon: mdi:lightbulb-on-outline
         entities:
-            - group.luzes_piso1
+            - group.luzes_quartomargarida
 
     blinds:
         view: yes
         icon: mdi:blinds
+        entities:
+            - group.estoresCozinha
         
     electricity_consumption:
         view: yes
         icon: mdi:flash
         entities:
             - group.maquinaloica
+            - group.maquinaroupa
+            - group.maquinasecar
+            - group.congelador
            
     television:
         view: yes
         icon: mdi:television
         entities:
-            - media_player.samsung
-            - media_player.meo
+            - group.tv_sala
+            - group.tvbox
 
     temperature:
         view: yes
         icon: mdi:thermometer-lines
         entities:
             - group.piso0_temp
-            - climate.ac_sala
-            - group.ac_sala
             - group.piso1_temp
+            - group.quarto_temp
+            - group.margarida_temp
+            - group.ines_temp
             - history_graph.temperatura_no_interior_da_casa
             - history_graph.humidade_no_interior_da_casa
+    
+    garden_view:
+        view: yes
+        name: Garden
+        icon: mdi:flower
+        entities:
+            - group.master_control
+            - group.irrigation_information
+            - group.irrigation_cycle1
+            - group.irrigation_cycle2
+            - group.irrigation_cycle1_status
+            - group.irrigation_cycle2_status
+            - group.irrigation_valves
+            - group.cycle1_weather_settings
+            - group.cycle2_weather_settings
+        
+    combustiveis:
+        view: yes
+        icon: mdi:gas-station
+        entities:
+            - group.combustiveisjumbo
+            - group.combustiveisintermarche
+            - group.combustiveisgalp
+            - group.combustiveisfafe
+    
+    devices_status:
+        view: yes
+        icon: mdi:server-network
+        entities:
+            - group.broadlinks_status
+            - group.cameras_status
+            - group.notifications_enablers
+            - group.bateries_status
+    
+    sala:
+        view: yes
+        name: Sala
+        entities:
+            - group.porta_sala
+            - group.porta_rua
+            - group.tvbox
+            - media_player.samsung
+            - media_player.meo
+            - group.piso0_temp
+            - group.ac_sala
+            - group.movimento_sala
+            
+    escritorio:
+        view: yes
+        name: Escritório
+        entities:
+        
+    Cozinha:
+        view: yes
+        name: Cozinha
+        entities:
+            - group.estoresCozinha
+        
+    Garagem:
+        view: yes
+        name: Garagem
+        entities:
+            - group.porta_garagem
+   
+    Qprincipal:
+        view: yes
+        name: Quarto
+        entities:
+            - group.quarto_temp
+            - group.ac_quarto_principal
+            - group.movimento_piso1
+    
+    QMargarida:
+        view: yes
+        name: Margarida
+        entities:   
+            - group.margarida_temp
+            - group.luzes_quartomargarida
+            - group.ac_margarida
+            
+    QInes:
+        view: yes
+        name: Inês
+        entities:   
+            - group.ines_temp
+            - group.ac_ines
+            
     misc:
         view: yes
         icon: mdi:memory
         entities:
             - group.pi_state
+            - sensor.tempo_online
+            - sensor.versao_atual
+            - sensor.versao_disponivel
             - input_select.homeassistant_template
+            - input_select.log_level
+            - group.grp_last_notifications
+            - group.internet_speed
+        
     

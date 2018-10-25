@@ -13,11 +13,11 @@
     
   - platform: broadlink
     name: Samsung
-    host: 192.168.1.81
+    host: !secret broadlinkSala_IP
     mac: '78:0f:77:18:4a:be'
     ircodes_ini: 'broadlink_media_codes/samsung.ini'
     ping_host: !secret IP_MainTelevision
-
+    
 #######################################################################################################################
 #  __  __   _____    ___      ____                 
 # |  \/  | | ____|  / _ \    | __ )    ___   __  __
@@ -28,7 +28,7 @@
 #######################################################################################################################    
   - platform: broadlink
     name: MEO
-    host: 192.168.1.81
+    host: !secret broadlinkSala_IP
     mac: '78:0f:77:18:4a:be'
     ircodes_ini: 'broadlink_media_codes/boxMEO.ini'
     ping_host: !secret IP_MEOBox

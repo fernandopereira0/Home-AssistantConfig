@@ -1,0 +1,156 @@
+
+#######################################################################################################################      
+#      ___         ___           ___                                              ___           ___         ___     
+#     /  /\       /__/\         /  /\                               ___          /__/\         /  /\       /  /\    
+#    /  /:/_      \  \:\       /  /:/_                             /  /\         \  \:\       /  /:/_     /  /::\   
+#   /  /:/ /\      \  \:\     /  /:/ /\    ___     ___            /  /:/          \  \:\     /  /:/ /\   /  /:/\:\  
+#  /  /:/ /:/  ___  \  \:\   /  /:/ /:/_  /__/\   /  /\          /__/::\      _____\__\:\   /  /:/ /:/  /  /:/  \:\ 
+# /__/:/ /:/  /__/\  \__\:\ /__/:/ /:/ /\ \  \:\ /  /:/          \__\/\:\__  /__/::::::::\ /__/:/ /:/  /__/:/ \__\:\
+# \  \:\/:/   \  \:\ /  /:/ \  \:\/:/ /:/  \  \:\  /:/              \  \:\/\ \  \:\~~\~~\/ \  \:\/:/   \  \:\ /  /:/
+#  \  \::/     \  \:\  /:/   \  \::/ /:/    \  \:\/:/                \__\::/  \  \:\  ~~~   \  \::/     \  \:\  /:/ 
+#   \  \:\      \  \:\/:/     \  \:\/:/      \  \::/                 /__/:/    \  \:\        \  \:\      \  \:\/:/  
+#    \  \:\      \  \::/       \  \::/        \__\/                  \__\/      \  \:\        \  \:\      \  \::/   
+#     \__\/       \__\/         \__\/                                            \__\/         \__\/       \__\/    
+#######################################################################################################################
+
+#homeassistant:
+##   ____                 _                         _              
+##  / ___|  _   _   ___  | |_    ___    _ __ ___   (_)  ____   ___ 
+## | |     | | | | / __| | __|  / _ \  | '_ ` _ \  | | |_  /  / _ \
+## | |___  | |_| | \__ \ | |_  | (_) | | | | | | | | |  / /  |  __/
+##  \____|  \__,_| |___/  \__|  \___/  |_| |_| |_| |_| /___|  \___|
+#
+#  customize:
+#    sensor.fuel_184681_gasoleo_especial:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.fuel_184681_gasoleo_simples:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.fuel_184681_gasolina_especial_95:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.fuel_184681_gasolina_simples_95:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.fuel_181715_gasoleo_especial:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.fuel_181715_gasoleo_simples:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.fuel_181715_gasolina_especial_95:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.fuel_181715_gasolina_simples_95:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.fuel_166014_gasoleo_especial:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.fuel_166014_gasoleo_simples:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.fuel_166014_gasolina_especial_95:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.fuel_166014_gasolina_simples_95:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.fuel_160933_gasoleo_especial:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.fuel_160933_gasoleo_simples:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.fuel_160933_gasolina_especial_95:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.fuel_160933_gasolina_simples_95:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+
+#  ____               _   _            _     
+# / ___|  __      __ (_) | |_    ___  | |__  
+# \___ \  \ \ /\ / / | | | __|  / __| | '_ \ 
+#  ___) |  \ V  V /  | | | |_  | (__  | | | |
+# |____/    \_/\_/   |_|  \__|  \___| |_| |_|
+  
+#  ____                                      
+# / ___|    ___   _ __    ___    ___    _ __ 
+# \___ \   / _ \ | '_ \  / __|  / _ \  | '__|
+#  ___) | |  __/ | | | | \__ \ | (_) | | |   
+# |____/   \___| |_| |_| |___/  \___/  |_|           
+      
+#     _              _                                 _     _                 
+#    / \     _   _  | |_    ___    _ __ ___     __ _  | |_  (_)   ___    _ __  
+#   / _ \   | | | | | __|  / _ \  | '_ ` _ \   / _` | | __| | |  / _ \  | '_ \ 
+#  / ___ \  | |_| | | |_  | (_) | | | | | | | | (_| | | |_  | | | (_) | | | | |
+# /_/   \_\  \__,_|  \__|  \___/  |_| |_| |_|  \__,_|  \__| |_|  \___/  |_| |_|
+#  automation: 
+#    Ao iniciar o Home Assistant corre o batch fuel_info.sh
+#    - alias: Correr Combustiveis
+#      trigger:
+#        - platform: homeassistant
+#          event: start
+#      action:
+#        - service: shell_command.correr_combustiveis
+#        - service: script.notify_save_to_file
+#          data:
+#            message: '{{ as_timestamp (now()) | timestamp_custom("%d/%b/%Y %T") }} - Preços dos combustíveis atualizados com sucesso'    
+        
+        
+#    Actualiza os preços todos os dias às 2 da manhã, só  não altera se o posto de combustivel não tiver alterado na base deles.
+#    - alias: Atualiza todos os dias
+#      trigger:
+#       - platform: time
+#          at: '02:00'
+#      action:
+#        - service: shell_command.correr_combustiveis
+#        - service: script.notify_save_to_file
+#          data:
+#            message: '{{ as_timestamp (now()) | timestamp_custom("%d/%b/%Y %T") }} - Preços dos combustíveis atualizados com sucesso'    
+
+#   ____                                
+#  / ___|  _ __    ___    _   _   _ __  
+# | |  _  | '__|  / _ \  | | | | | '_ \ 
+# | |_| | | |    | (_) | | |_| | | |_) |
+#  \____| |_|     \___/   \__,_| | .__/ 
+#                                |_|              
+  group:
+    combustiveisjumbo:
+        control: hidden
+        name: Jumbo Guimarães
+        entities:
+            - sensor.fuel_184681_gasoleo_especial
+            - sensor.fuel_184681_gasoleo_simples
+            - sensor.fuel_184681_gasolina_especial_95
+            - sensor.fuel_184681_gasolina_simples_95
+            
+    combustiveisintermarche:
+        control: hidden
+        name: Intermarche Taipas
+        entities:
+            - sensor.fuel_181715_gasoleo_especial
+            - sensor.fuel_181715_gasoleo_simples
+            - sensor.fuel_181715_gasolina_especial_95
+            - sensor.fuel_181715_gasolina_simples_95
+            
+    combustiveisfafe:
+        control: hidden
+        name: Intermarche Fafe (mais barato)
+        entities:
+            - sensor.fuel_166014_gasoleo_especial
+            - sensor.fuel_166014_gasoleo_simples
+            - sensor.fuel_166014_gasolina_especial_95
+            - sensor.fuel_166014_gasolina_simples_95
+            
+    combustiveisgalp:
+        control: hidden
+        name: GALP Taipas
+        entities:
+            - sensor.fuel_160933_gasoleo_especial
+            - sensor.fuel_160933_gasoleo_simples
+            - sensor.fuel_160933_gasolina_especial_95
+            - sensor.fuel_160933_gasolina_simples_95
+    

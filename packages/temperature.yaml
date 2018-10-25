@@ -1,0 +1,454 @@
+
+#######################################################################################################################      
+#                  ___           ___           ___         ___           ___           ___                       ___           ___           ___     
+#      ___        /  /\         /__/\         /  /\       /  /\         /  /\         /  /\          ___        /__/\         /  /\         /  /\    
+#     /  /\      /  /:/_       |  |::\       /  /::\     /  /:/_       /  /::\       /  /::\        /  /\       \  \:\       /  /::\       /  /:/_   
+#    /  /:/     /  /:/ /\      |  |:|:\     /  /:/\:\   /  /:/ /\     /  /:/\:\     /  /:/\:\      /  /:/        \  \:\     /  /:/\:\     /  /:/ /\  
+#   /  /:/     /  /:/ /:/_   __|__|:|\:\   /  /:/~/:/  /  /:/ /:/_   /  /:/~/:/    /  /:/~/::\    /  /:/     ___  \  \:\   /  /:/~/:/    /  /:/ /:/_ 
+#  /  /::\    /__/:/ /:/ /\ /__/::::| \:\ /__/:/ /:/  /__/:/ /:/ /\ /__/:/ /:/___ /__/:/ /:/\:\  /  /::\    /__/\  \__\:\ /__/:/ /:/___ /__/:/ /:/ /\
+# /__/:/\:\   \  \:\/:/ /:/ \  \:\~~\__\/ \  \:\/:/   \  \:\/:/ /:/ \  \:\/:::::/ \  \:\/:/__\/ /__/:/\:\   \  \:\ /  /:/ \  \:\/:::::/ \  \:\/:/ /:/
+# \__\/  \:\   \  \::/ /:/   \  \:\        \  \::/     \  \::/ /:/   \  \::/~~~~   \  \::/      \__\/  \:\   \  \:\  /:/   \  \::/~~~~   \  \::/ /:/ 
+#      \  \:\   \  \:\/:/     \  \:\        \  \:\      \  \:\/:/     \  \:\        \  \:\           \  \:\   \  \:\/:/     \  \:\        \  \:\/:/  
+#       \__\/    \  \::/       \  \:\        \  \:\      \  \::/       \  \:\        \  \:\           \__\/    \  \::/       \  \:\        \  \::/   
+#                 \__\/         \__\/         \__\/       \__\/         \__\/         \__\/                     \__\/         \__\/         \__\/    
+#######################################################################################################################
+
+#homeassistant:
+##   ____                 _                         _              
+##  / ___|  _   _   ___  | |_    ___    _ __ ___   (_)  ____   ___ 
+## | |     | | | | / __| | __|  / _ \  | '_ ` _ \  | | |_  /  / _ \
+## | |___  | |_| | \__ \ | |_  | (_) | | | | | | | | |  / /  |  __/
+##  \____|  \__,_| |___/  \__|  \___/  |_| |_| |_| |_| /___|  \___|
+#
+#  customize:
+#    sensor.piso_0_temperature:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.piso_0_humidity:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.piso_0_battery:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.piso_1_temperature:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.piso_1_humidity:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.piso_1_battery:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+
+#  _                           _             _                       _                        
+# (_)  _ __    _ __    _   _  | |_          | |__     ___     ___   | |   ___    __ _   _ __  
+# | | | '_ \  | '_ \  | | | | | __|         | '_ \   / _ \   / _ \  | |  / _ \  / _` | | '_ \ 
+# | | | | | | | |_) | | |_| | | |_          | |_) | | (_) | | (_) | | | |  __/ | (_| | | | | |
+# |_| |_| |_| | .__/   \__,_|  \__|  _____  |_.__/   \___/   \___/  |_|  \___|  \__,_| |_| |_|
+#             |_|                   |_____|                                                                                              
+      
+  input_boolean:
+    notify_temp_piso0:
+       name: Notifica temperatura piso0
+       initial: off
+       icon: mdi:bell-ring
+    
+    notify_temp_piso1:
+       name: Notifica temperatura piso1
+       initial: off
+       icon: mdi:bell-ring
+
+    notify_temp_quarto:
+       name: Notifica temperatura quarto
+       initial: off
+       icon: mdi:bell-ring
+       
+    notify_temp_margarida:
+       name: Notifica temperatura margarida
+       initial: off
+       icon: mdi:bell-ring
+       
+    notify_temp_ines:
+       name: Notifica temperatura ines
+       initial: off
+       icon: mdi:bell-ring
+
+#  _                           _                                         _                   
+# (_)  _ __    _ __    _   _  | |_           _ __    _   _   _ __ ___   | |__     ___   _ __ 
+# | | | '_ \  | '_ \  | | | | | __|         | '_ \  | | | | | '_ ` _ \  | '_ \   / _ \ | '__|
+# | | | | | | | |_) | | |_| | | |_          | | | | | |_| | | | | | | | | |_) | |  __/ | |   
+# |_| |_| |_| | .__/   \__,_|  \__|  _____  |_| |_|  \__,_| |_| |_| |_| |_.__/   \___| |_|   
+#             |_|                   |_____|                                                  
+             
+  input_number:
+    temp_alta_piso0:
+      name: Temperatura alta piso 0
+      icon: mdi:thermometer-lines
+      initial: 26
+      min: 25
+      max: 40
+      step: 1
+      mode: box
+    temp_baixa_piso0:
+      name: Temperatura baixa piso 0
+      icon: mdi:thermometer
+      initial: 19
+      min: 0
+      max: 22
+      step: 1
+      mode: box
+    temp_alta_piso1:
+      name: Temperatura alta piso 1
+      icon: mdi:thermometer-lines
+      initial: 27
+      min: 25
+      max: 40
+      step: 1
+      mode: box
+    temp_baixa_piso1:
+      name: Temperatura baixa piso 1
+      icon: mdi:thermometer
+      initial: 18
+      min: 0
+      max: 22
+      step: 1
+      mode: box
+
+#  ____                                      
+# / ___|    ___   _ __    ___    ___    _ __ 
+# \___ \   / _ \ | '_ \  / __|  / _ \  | '__|
+#  ___) | |  __/ | | | | \__ \ | (_) | | |   
+# |____/   \___| |_| |_| |___/  \___/  |_|     
+  sensor:
+    - platform: mitemp_bt
+      mac: '4C:65:A8:D3:CB:D8'
+      name: Piso 0
+      force_update: false
+      median: 1
+      monitored_conditions:
+        - temperature
+        - humidity
+        - battery
+    
+    - platform: mitemp_bt
+      mac: '4C:65:A8:D3:CC:A0'
+      name: Piso 1
+      force_update: false
+      median: 1
+      monitored_conditions:
+        - temperature
+        - humidity
+        - battery
+    
+    ################################################################
+    # QUARTO PRINCIPAL
+    ################################################################
+    - platform: "mqtt"
+      name: "Temperatura Quarto"
+      state_topic: "zigbee2mqtt/temperaturaquarto"
+      availability_topic: "zigbee2mqtt/bridge/state"
+      unit_of_measurement: "°C"
+      icon: "mdi:thermometer"
+      value_template: "{{ value_json.temperature }}"
+      
+    - platform: "mqtt"
+      name: "Humidade Quarto"
+      state_topic: "zigbee2mqtt/temperaturaquarto"
+      availability_topic: "zigbee2mqtt/bridge/state"
+      unit_of_measurement: "%"
+      icon: "mdi:water-percent"
+      value_template: "{{ value_json.humidity }}"
+    
+    - platform: "mqtt"
+      name: "Pressão Quarto"
+      state_topic: "zigbee2mqtt/temperaturaquarto"
+      availability_topic: "zigbee2mqtt/bridge/state"
+      unit_of_measurement: "Pa"
+      icon: "mdi:gauge"
+      value_template: "{{ value_json.pressure }}"
+    
+    - platform: "mqtt"
+      name: "Bateria Quarto"
+      state_topic: "zigbee2mqtt/temperaturaquarto"
+      availability_topic: "zigbee2mqtt/bridge/state"
+      unit_of_measurement: "%"
+      icon: "mdi:battery-charging-wireless-50"
+      value_template: "{{ value_json.battery }}"
+      
+    - platform: mqtt
+      name: "Força Sinal Quarto"
+      state_topic: "zigbee2mqtt/temperaturaquarto"
+      availability_topic: "zigbee2mqtt/bridge/state"
+      unit_of_measurement: "dB"
+      icon: mdi:speedometer
+      value_template: "{{ value_json.linkquality }}"
+    
+    - platform: mqtt
+      name: "Voltagem sensor Quarto"
+      state_topic: "zigbee2mqtt/temperaturaquarto"
+      availability_topic: "zigbee2mqtt/bridge/state"
+      unit_of_measurement: "mVolts"
+      icon: mdi:speedometer
+      value_template: "({{ value_json.voltage }} )"
+      
+      
+    ################################################################
+    # Margarida
+    ################################################################
+    - platform: "mqtt"
+      name: "Temperatura Margarida"
+      state_topic: "zigbee2mqtt/temperaturamargarida"
+      availability_topic: "zigbee2mqtt/bridge/state"
+      unit_of_measurement: "°C"
+      icon: "mdi:thermometer"
+      value_template: "{{ value_json.temperature }}"
+      
+    - platform: "mqtt"
+      name: "Humidade Margarida"
+      state_topic: "zigbee2mqtt/temperaturamargarida"
+      availability_topic: "zigbee2mqtt/bridge/state"
+      unit_of_measurement: "%"
+      icon: "mdi:water-percent"
+      value_template: "{{ value_json.humidity }}"
+    
+    - platform: "mqtt"
+      name: "Pressão Margarida"
+      state_topic: "zigbee2mqtt/temperaturamargarida"
+      availability_topic: "zigbee2mqtt/bridge/state"
+      unit_of_measurement: "Pa"
+      icon: "mdi:gauge"
+      value_template: "{{ value_json.pressure }}"
+    
+    - platform: "mqtt"
+      name: "Bateria Margarida"
+      state_topic: "zigbee2mqtt/temperaturamargarida"
+      availability_topic: "zigbee2mqtt/bridge/state"
+      unit_of_measurement: "%"
+      icon: "mdi:battery-charging-wireless-50"
+      value_template: "{{ value_json.battery }}"
+      
+    - platform: mqtt
+      name: "Força Sinal Margarida"
+      state_topic: "zigbee2mqtt/temperaturamargarida"
+      availability_topic: "zigbee2mqtt/bridge/state"
+      unit_of_measurement: "dB"
+      icon: mdi:speedometer
+      value_template: "{{ value_json.linkquality }}"
+    
+    - platform: mqtt
+      name: "Voltagem sensor Margarida"
+      state_topic: "zigbee2mqtt/temperaturamargarida"
+      availability_topic: "zigbee2mqtt/bridge/state"
+      unit_of_measurement: "mVolts"
+      icon: mdi:speedometer
+      value_template: "({{ value_json.voltage }} )"
+    
+    ################################################################
+    # Inês
+    ################################################################
+    - platform: "mqtt"
+      name: "Temperatura Inês"
+      state_topic: "zigbee2mqtt/temperaturaines"
+      availability_topic: "zigbee2mqtt/bridge/state"
+      unit_of_measurement: "°C"
+      icon: "mdi:thermometer"
+      value_template: "{{ value_json.temperature }}"
+      
+    - platform: "mqtt"
+      name: "Humidade Inês"
+      state_topic: "zigbee2mqtt/temperaturaines"
+      availability_topic: "zigbee2mqtt/bridge/state"
+      unit_of_measurement: "%"
+      icon: "mdi:water-percent"
+      value_template: "{{ value_json.humidity }}"
+    
+    - platform: "mqtt"
+      name: "Pressão Inês"
+      state_topic: "zigbee2mqtt/temperaturaines"
+      availability_topic: "zigbee2mqtt/bridge/state"
+      unit_of_measurement: "Pa"
+      icon: "mdi:gauge"
+      value_template: "{{ value_json.pressure }}"
+    
+    - platform: "mqtt"
+      name: "Bateria Inês"
+      state_topic: "zigbee2mqtt/temperaturaines"
+      availability_topic: "zigbee2mqtt/bridge/state"
+      unit_of_measurement: "%"
+      icon: "mdi:battery-charging-wireless-50"
+      value_template: "{{ value_json.battery }}"
+      
+    - platform: mqtt
+      name: "Força Sinal Inês"
+      state_topic: "zigbee2mqtt/temperaturaines"
+      availability_topic: "zigbee2mqtt/bridge/state"
+      unit_of_measurement: "dB"
+      icon: mdi:speedometer
+      value_template: "{{ value_json.linkquality }}"
+    
+    - platform: mqtt
+      name: "Voltagem sensor Inês"
+      state_topic: "zigbee2mqtt/temperaturaines"
+      availability_topic: "zigbee2mqtt/bridge/state"
+      unit_of_measurement: "mVolts"
+      icon: mdi:speedometer
+      value_template: "({{ value_json.voltage }} )"
+#     _              _                                 _     _                 
+#    / \     _   _  | |_    ___    _ __ ___     __ _  | |_  (_)   ___    _ __  
+#   / _ \   | | | | | __|  / _ \  | '_ ` _ \   / _` | | __| | |  / _ \  | '_ \ 
+#  / ___ \  | |_| | | |_  | (_) | | | | | | | | (_| | | |_  | | | (_) | | | | |
+# /_/   \_\  \__,_|  \__|  \___/  |_| |_| |_|  \__,_|  \__| |_|  \___/  |_| |_|
+  automation:
+    - alias: 'Temperatura alta piso 1'
+      trigger:
+        - platform: numeric_state
+          entity_id: sensor.piso_1_temperature
+          above: 27
+      condition:
+        condition: state
+        entity_id: input_boolean.notify_temp_piso1
+        state: 'on'
+      action:
+        - service: notify.pushbullet
+          data_template:
+            title: "Temperatura no piso 1 elevada"
+            message: "A temperatura no piso 1 é {{ states.sensor.piso_1_temperature.state }} graus"
+            target:
+              - email/fernando.pereira.ano@gmail.com
+              - email/ccaattaarriinnaa@gmail.com
+        - service: script.notify_save_to_file
+          data:
+            message: '{{ as_timestamp (now()) | timestamp_custom("%d/%b/%Y %T") }} - Temperatura no piso 1 elevada - enviado para Fernando e Catarina'  
+          
+    - alias: 'Temperatura alta piso 0'
+      trigger:
+        - platform: numeric_state
+          entity_id: sensor.piso_0_temperature
+          above: 26
+      condition:
+        condition: state
+        entity_id: input_boolean.notify_temp_piso1
+        state: 'on'
+      action:
+        - service: notify.pushbullet
+          data_template:
+            title: "Temperatura no piso 0 elevada"
+            message: "A temperatura no piso 0 é {{ states.sensor.piso_0_temperature.state }} graus"
+            target:
+              - email/fernando.pereira.ano@gmail.com
+              - email/ccaattaarriinnaa@gmail.com
+        - service: script.notify_save_to_file
+          data:
+            message: '{{ as_timestamp (now()) | timestamp_custom("%d/%b/%Y %T") }} - Temperatura no piso 0 elevada - enviado para Fernando e Catarina'      
+
+    - alias: 'Temperatura baixa piso 1'
+      trigger:
+        - platform: numeric_state
+          entity_id: sensor.piso_1_temperature
+          below: 18
+      condition:
+        condition: state
+        entity_id: input_boolean.notify_temp_piso1
+        state: 'on'
+      action:
+        - service: notify.pushbullet
+          data_template:
+            title: "Temperatura no piso 1 baixa"
+            message: "A temperatura no piso 1 é {{ states.sensor.piso_1_temperature.state }} graus"
+            target:
+              - email/fernando.pereira.ano@gmail.com
+              - email/ccaattaarriinnaa@gmail.com
+        - service: script.notify_save_to_file
+          data:
+            message: '{{ as_timestamp (now()) | timestamp_custom("%d/%b/%Y %T") }} - Temperatura no piso 1 baixa - enviado para Fernando e Catarina'  
+          
+    - alias: 'Temperatura baixa piso 0'
+      trigger:
+        - platform: numeric_state
+          entity_id: sensor.piso_0_temperature
+          below: 19
+      condition:
+        condition: state
+        entity_id: input_boolean.notify_temp_piso1
+        state: 'on'
+      action:
+        - service: notify.pushbullet
+          data_template:
+            title: "Temperatura no piso 0 baixa"
+            message: "A temperatura no piso 0 é {{ states.sensor.piso_0_temperature.state }} graus"
+            target:
+              - email/fernando.pereira.ano@gmail.com
+              - email/ccaattaarriinnaa@gmail.com
+        - service: script.notify_save_to_file
+          data:
+            message: '{{ as_timestamp (now()) | timestamp_custom("%d/%b/%Y %T") }} - Temperatura no piso 0 baixa - enviado para Fernando e Catarina'  
+            
+            
+
+#  _   _   _         _                               ____                          _     
+# | | | | (_)  ___  | |_    ___    _ __   _   _     / ___|  _ __    __ _   _ __   | |__  
+# | |_| | | | / __| | __|  / _ \  | '__| | | | |   | |  _  | '__|  / _` | | '_ \  | '_ \ 
+# |  _  | | | \__ \ | |_  | (_) | | |    | |_| |   | |_| | | |    | (_| | | |_) | | | | |
+# |_| |_| |_| |___/  \__|  \___/  |_|     \__, |    \____| |_|     \__,_| | .__/  |_| |_|
+#                                         |___/                           |_|            
+  history_graph:
+    graph_interior_temperature:
+      name: Temperatura no interior da casa
+      entities:
+        - sensor.piso_0_temperature
+        - sensor.piso_1_temperature
+      hours_to_show: 48
+      refresh: 30
+    
+    graph_interior_humidity:
+      name: Humidade no interior da casa
+      entities:
+        - sensor.piso_0_humidity
+        - sensor.piso_1_humidity
+      hours_to_show: 48
+      refresh: 30
+
+            
+#   ____                                
+#  / ___|  _ __    ___    _   _   _ __  
+# | |  _  | '__|  / _ \  | | | | | '_ \ 
+# | |_| | | |    | (_) | | |_| | | |_) |
+#  \____| |_|     \___/   \__,_| | .__/ 
+#                                |_|              
+  group:
+    piso0_temp:
+        name: Temperatura no Piso 0
+        view: no
+        entities:
+            - sensor.piso_0_temperature
+            - sensor.piso_0_humidity
+    piso1_temp:
+        name: Temperatura no Piso 1
+        view: no
+        entities:
+            - sensor.piso_1_temperature
+            - sensor.piso_1_humidity
+    quarto_temp:
+        name: Temperatura no quarto principal
+        view: no
+        entities:
+            - sensor.temperatura_quarto
+            - sensor.humidade_quarto
+            - sensor.pressao_quarto
+            - sensor.forca_sinal_quarto
+    margarida_temp:
+        name: Temperatura no quarto da Margarida
+        view: no
+        entities:
+            - sensor.temperatura_margarida
+            - sensor.humidade_margarida
+            - sensor.pressao_margarida
+            - sensor.forca_sinal_margarida
+    ines_temp:
+        name: Temperatura no quarto da Inês
+        view: no
+        entities:
+            - sensor.temperatura_ines
+            - sensor.humidade_ines
+            - sensor.pressao_ines
+            - sensor.forca_sinal_ines

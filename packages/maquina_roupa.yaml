@@ -1,0 +1,224 @@
+
+#######################################################################################################################      
+#     ___           ___           ___           ___                       ___           ___                    ___           ___           ___           ___                       ___           ___     
+#    /__/\         /  /\         /  /\         /__/\        ___          /__/\         /  /\                  /__/\         /  /\         /  /\         /__/\        ___          /__/\         /  /\    
+#   _\_ \:\       /  /::\       /  /:/_        \  \:\      /  /\         \  \:\       /  /:/_                |  |::\       /  /::\       /  /:/         \  \:\      /  /\         \  \:\       /  /:/_   
+#  /__/\ \:\     /  /:/\:\     /  /:/ /\        \__\:\    /  /:/          \  \:\     /  /:/ /\               |  |:|:\     /  /:/\:\     /  /:/           \__\:\    /  /:/          \  \:\     /  /:/ /\  
+# _\_ \:\ \:\   /  /:/~/::\   /  /:/ /::\   ___ /  /::\  /__/::\      _____\__\:\   /  /:/_/::\            __|__|:|\:\   /  /:/~/::\   /  /:/  ___   ___ /  /::\  /__/::\      _____\__\:\   /  /:/ /:/_ 
+#/__/\ \:\ \:\ /__/:/ /:/\:\ /__/:/ /:/\:\ /__/\  /:/\:\ \__\/\:\__  /__/::::::::\ /__/:/__\/\:\          /__/::::| \:\ /__/:/ /:/\:\ /__/:/  /  /\ /__/\  /:/\:\ \__\/\:\__  /__/::::::::\ /__/:/ /:/ /\
+#\  \:\ \:\/:/ \  \:\/:/__\/ \  \:\/:/~/:/ \  \:\/:/__\/    \  \:\/\ \  \:\~~\~~\/ \  \:\ /~~/:/          \  \:\~~\__\/ \  \:\/:/__\/ \  \:\ /  /:/ \  \:\/:/__\/    \  \:\/\ \  \:\~~\~~\/ \  \:\/:/ /:/
+# \  \:\ \::/   \  \::/       \  \::/ /:/   \  \::/          \__\::/  \  \:\  ~~~   \  \:\  /:/            \  \:\        \  \::/       \  \:\  /:/   \  \::/          \__\::/  \  \:\  ~~~   \  \::/ /:/ 
+#  \  \:\/:/     \  \:\        \__\/ /:/     \  \:\          /__/:/    \  \:\        \  \:\/:/              \  \:\        \  \:\        \  \:\/:/     \  \:\          /__/:/    \  \:\        \  \:\/:/  
+#   \  \::/       \  \:\         /__/:/       \  \:\         \__\/      \  \:\        \  \::/                \  \:\        \  \:\        \  \::/       \  \:\         \__\/      \  \:\        \  \::/   
+#    \__\/         \__\/         \__\/         \__\/                     \__\/         \__\/                  \__\/         \__\/         \__\/         \__\/                     \__\/         \__\/    
+#######################################################################################################################
+
+#homeassistant:
+##   ____                 _                         _              
+##  / ___|  _   _   ___  | |_    ___    _ __ ___   (_)  ____   ___ 
+## | |     | | | | / __| | __|  / _ \  | '_ ` _ \  | | |_  /  / _ \
+## | |___  | |_| | \__ \ | |_  | (_) | | | | | | | | |  / /  |  __/
+##  \____|  \__,_| |___/  \__|  \___/  |_| |_| |_| |_| /___|  \___|
+#
+#  customize:
+#    switch.maquina_da_roupa:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.maquina_da_roupa_wats:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.maquina_da_roupa_amperes:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.maquina_da_roupa_voltagem:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.maquina_da_roupa_hoje:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.maquina_da_roupa_hoje_:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.maquina_da_roupa_ontem:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.maquina_da_roupa_ontem_:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.maquina_da_roupa_total:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.maquina_da_roupa_total_:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+
+#  ____               _   _            _     
+# / ___|  __      __ (_) | |_    ___  | |__  
+# \___ \  \ \ /\ / / | | | __|  / __| | '_ \ 
+#  ___) |  \ V  V /  | | | |_  | (__  | | | |
+# |____/    \_/\_/   |_|  \__|  \___| |_| |_|
+  switch:
+    - platform: mqtt
+      name: "Maquina da Roupa"
+      state_topic: "stat/maquinaroupa/POWER"
+      command_topic: "cmnd/maquinaroupa/power"
+      availability_topic: "tele/maquinaroupa/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false    
+#  ____                                      
+# / ___|    ___   _ __    ___    ___    _ __ 
+# \___ \   / _ \ | '_ \  / __|  / _ \  | '__|
+#  ___) | |  __/ | | | | \__ \ | (_) | | |   
+# |____/   \___| |_| |_| |___/  \___/  |_|     
+  sensor:
+  #watts
+    - platform: mqtt
+      name: "Maquina da Roupa Wats"
+      state_topic: "tele/maquinaroupa/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Power"] }}'
+      unit_of_measurement: "W"
+      icon: mdi:power-plug
+  #Amperes #
+    - platform: mqtt
+      name: "Maquina da Roupa Amperes"
+      state_topic: "tele/maquinaroupa/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Current"] }}'
+      unit_of_measurement: "A"
+      icon: mdi:flash-outline
+  #Voltagem
+    - platform: mqtt
+      name: "Maquina da Roupa Voltagem"
+      state_topic: "tele/maquinaroupa/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+      unit_of_measurement: "V"
+      icon: mdi:led-variant-on
+  #Hoje kWh 
+    - platform: mqtt
+      name: "Maquina da Roupa Hoje"
+      state_topic: "tele/maquinaroupa/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Today"] }}'
+      unit_of_measurement: "kWh"
+      icon: mdi:calendar-check
+  #Hoje € 
+    - platform: mqtt
+      name: "Maquina da Roupa Hoje (€)"
+      state_topic: "tele/maquinaroupa/SENSOR"
+      value_template: >-
+        {{states.sensor.maquina_da_roupa_hoje.state | multiply(0.1603) | round(4)}}
+      unit_of_measurement: "€"
+      icon: mdi:cash-usd
+  #Ontem kWh
+    - platform: mqtt
+      name: "Maquina da Roupa Ontem"
+      state_topic: "tele/maquinaroupa/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Yesterday"] }}'
+      unit_of_measurement: "kWh"  
+      icon: mdi:calendar-clock
+  #Ontem €
+    - platform: mqtt
+      name: "Maquina da Roupa Ontem (€)"
+      state_topic: "tele/maquinaroupa/SENSOR"
+      value_template: >-
+        {{states.sensor.maquina_da_roupa_ontem.state | multiply(0.1603) | round(4)}}
+      unit_of_measurement: "€"
+      icon: mdi:cash-usd
+  #Total kWh 
+    - platform: mqtt
+      name: "Maquina da Roupa Total"
+      state_topic: "tele/maquinaroupa/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Total"] }}'
+      unit_of_measurement: "kWh"
+      icon: mdi:calendar-multiple
+  #Total €
+    - platform: mqtt
+      name: "Maquina da Roupa Total (€)"
+      state_topic: "tele/maquinaroupa/SENSOR"
+      value_template: >-
+        {{states.sensor.maquina_da_roupa_total.state | multiply(0.1603) | round(4)}}
+      unit_of_measurement: "€"
+      icon: mdi:cash-usd
+      
+      
+#     _              _                                 _     _                 
+#    / \     _   _  | |_    ___    _ __ ___     __ _  | |_  (_)   ___    _ __  
+#   / _ \   | | | | | __|  / _ \  | '_ ` _ \   / _` | | __| | |  / _ \  | '_ \ 
+#  / ___ \  | |_| | | |_  | (_) | | | | | | | | (_| | | |_  | | | (_) | | | | |
+# /_/   \_\  \__,_|  \__|  \___/  |_| |_| |_|  \__,_|  \__| |_|  \___/  |_| |_|
+  automation:
+    - id: maquina_da_roupa_on_restart
+      alias: 'Atualizar maquina_da_roupa ao reiniciar HA'
+      hide_entity: True
+      trigger:
+        - platform: homeassistant
+          event: start
+      action:
+        - service: mqtt.publish
+          data:
+            topic: "cmnd/maquinaroupa/power"
+            payload: ""
+            qos: 0
+            retain: 0
+    - id: maquina_roupa_off
+      alias: 'Máquina Roupa OFF'
+      trigger:
+        - platform: state
+          entity_id: switch.maquina_da_roupa
+          from: 'on'
+          to: 'off'
+      condition:
+        - condition: numeric_state
+          entity_id: sensor.maquina_da_roupa_wats
+          above: 0
+      action:
+        - service: notify.pushbullet
+          data_template:
+            title: "Maquina da roupa desligada"
+            message: "A máquina da roupa foi desligada e estava a {{ states.sensor.maquina_da_roupa_wats.state }} watts, {{ states.sensor.maquina_da_roupa_amperes.state }} amperes e {{ states.sensor.maquina_da_roupa_voltagem.state }} volts"
+            target:
+              - email/fernando.pereira.ano@gmail.com
+              - email/ccaattaarriinnaa@gmail.com
+        - service: script.notify_save_to_file
+          data:
+            message: '{{ as_timestamp (now()) | timestamp_custom("%d/%b/%Y %T") }} - A máquina da roupa foi desligada e estava a {{ states.sensor.maquina_da_roupa_wats.state }} watts, {{ states.sensor.maquina_da_roupa_amperes.state }} amperes e {{ states.sensor.maquina_da_roupa_voltagem.state }} volts'      
+        - service: switch.turn_on
+          entity_id: switch.maquina_da_roupa
+#   ____                                
+#  / ___|  _ __    ___    _   _   _ __  
+# | |  _  | '__|  / _ \  | | | | | '_ \ 
+# | |_| | | |    | (_) | | |_| | | |_) |
+#  \____| |_|     \___/   \__,_| | .__/ 
+#                                |_|              
+  group:
+    maquinaroupa_pow:
+        name: Consumo Máquina da roupa
+        view: no
+        entities:
+            - sensor.maquina_da_roupa_wats
+            - sensor.maquina_da_roupa_amperes
+            - sensor.maquina_da_roupa_voltagem
+            - sensor.maquina_da_roupa_hoje
+            - sensor.maquina_da_roupa_hoje_
+            - sensor.maquina_da_roupa_ontem
+            - sensor.maquina_da_roupa_ontem_
+            - sensor.maquina_da_roupa_total
+            - sensor.maquina_da_roupa_total_
+            
+    maquinaroupa:
+        name: Máquina da roupa
+        view: no
+        entities:
+            - switch.maquina_da_roupa
+            - sensor.maquina_da_roupa_wats
+            - sensor.maquina_da_roupa_amperes
+            - sensor.maquina_da_roupa_voltagem
+            - sensor.maquina_da_roupa_hoje
+            - sensor.maquina_da_roupa_hoje_
+            - sensor.maquina_da_roupa_ontem
+            - sensor.maquina_da_roupa_ontem_
+            - sensor.maquina_da_roupa_total
+            - sensor.maquina_da_roupa_total_
+            

@@ -13,6 +13,7 @@
         hosts:
           fernando: !secret fernandoPhone_IP
           catarina: !secret catarinaPhone_IP
+          ipad_de_fernando: !secret IPAD_IP
 
 
 #######################################################################################################################          

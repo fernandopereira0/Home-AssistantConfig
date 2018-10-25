@@ -1,0 +1,19 @@
+{
+    "ota_server_ip": "192.168.1.80",
+    "ota_server_port": "80",
+    "username": "pi",
+    "password": "45de73739386b06082fdda9be9a26690",
+    "refreshtime": "5",
+    "current_git_tag": "v1.5.4",
+    "update_automatic_lang": "EN",
+    "nightmode": "auto",
+    "login": "1",
+    "scan_from_ip": "192.168.1.50",
+    "scan_to_ip": "192.168.1.254",
+    "homepage": "start",
+    "check_for_updates": "1",
+    "minimize_resources": "1",
+    "ssl": false,
+    "certfile": "fullchain.pem",
+    "keyfile": "privkey.pem"
+}

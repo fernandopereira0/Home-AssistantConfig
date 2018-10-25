@@ -1,0 +1,274 @@
+04/Sep/2018 07:02:03 - Alterado o tema para darkorange
+04/Sep/2018 14:00:39 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+04/Sep/2018 15:34:17 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+04/Sep/2018 15:46:00 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+04/Sep/2018 17:33:04 - Catarina chegou a casa enviado para Fernando
+04/Sep/2018 17:57:03 - Catarina chegou a casa enviado para Fernando
+04/Sep/2018 18:18:10 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+04/Sep/2018 18:18:21 - Catarina chegou a casa enviado para Fernando
+04/Sep/2018 20:02:57 - Alterado o tema para darkred
+05/Sep/2018 07:03:04 - Alterado o tema para darkorange
+05/Sep/2018 14:33:43 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+05/Sep/2018 18:01:00 - Catarina chegou a casa enviado para Fernando
+05/Sep/2018 18:24:46 - Catarina chegou a casa enviado para Fernando
+05/Sep/2018 20:01:17 - Alterado o tema para darkred
+06/Sep/2018 07:04:05 - Alterado o tema para darkorange
+06/Sep/2018 11:21:36 - Alterado o tema para darkorange
+06/Sep/2018 11:50:51 - Alterado o tema para darkorange
+06/Sep/2018 14:44:20 - Alterado o tema para darkorange
+06/Sep/2018 15:11:29 - Alterado o tema para darkorange
+06/Sep/2018 15:19:33 - Alterado o tema para darkorange
+06/Sep/2018 15:20:17 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+06/Sep/2018 15:44:41 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+06/Sep/2018 16:08:14 - Alterado o tema para darkorange
+06/Sep/2018 16:11:42 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+06/Sep/2018 16:42:10 - Alterado o tema para darkred
+06/Sep/2018 16:42:26 - Alterado o tema para default
+06/Sep/2018 16:42:33 - Alterado o tema para darkorange
+06/Sep/2018 18:04:27 - Catarina chegou a casa enviado para Fernando
+06/Sep/2018 18:57:37 - Catarina chegou a casa enviado para Fernando
+06/Sep/2018 19:59:37 - Alterado o tema para darkred
+07/Sep/2018 07:05:06 - Alterado o tema para darkorange
+07/Sep/2018 14:57:55 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+07/Sep/2018 17:51:25 - Catarina chegou a casa enviado para Fernando
+07/Sep/2018 18:42:05 - Catarina chegou a casa enviado para Fernando
+07/Sep/2018 19:57:56 - Alterado o tema para darkred
+08/Sep/2018 07:06:07 - Alterado o tema para darkorange
+08/Sep/2018 11:10:28 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+08/Sep/2018 11:20:13 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+08/Sep/2018 11:36:45 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+08/Sep/2018 14:35:01 - Alterado o tema para darkorange
+08/Sep/2018 14:35:42 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+08/Sep/2018 15:58:36 - Alterado o tema para darkorange
+08/Sep/2018 15:58:55 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+08/Sep/2018 16:14:54 - A máquina da loiça foi desligada e estava a 0 watts
+08/Sep/2018 16:23:50 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+08/Sep/2018 16:31:11 - A máquina da loiça foi desligada e estava a 16 watts, 0.174 amperes e 246 volts
+08/Sep/2018 16:34:02 - A máquina da loiça foi desligada e estava a 29 watts, 0.165 amperes e 246 volts
+08/Sep/2018 16:34:44 - A máquina da loiça foi desligada e estava a 49 watts, 0.187 amperes e 246 volts
+08/Sep/2018 16:37:15 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+08/Sep/2018 16:54:38 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+08/Sep/2018 17:40:17 - Alterado o tema para darkorange
+08/Sep/2018 17:41:42 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+08/Sep/2018 17:45:33 - Alterado o tema para darkorange
+08/Sep/2018 17:47:32 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+08/Sep/2018 17:51:31 - Alterado o tema para darkorange
+08/Sep/2018 19:56:14 - Alterado o tema para darkred
+09/Sep/2018 07:07:06 - Alterado o tema para darkorange
+09/Sep/2018 14:36:50 - Alterado o tema para darkorange
+09/Sep/2018 14:42:12 - Alterado o tema para darkorange
+09/Sep/2018 14:48:31 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+09/Sep/2018 15:03:57 - Alterado o tema para darkred
+09/Sep/2018 15:05:10 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+09/Sep/2018 15:13:51 - Alterado o tema para darkorange
+09/Sep/2018 15:14:32 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+09/Sep/2018 17:33:43 - Alterado o tema para darkorange
+09/Sep/2018 17:37:01 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+09/Sep/2018 19:54:33 - Alterado o tema para darkred
+10/Sep/2018 07:08:08 - Alterado o tema para darkorange
+10/Sep/2018 12:29:14 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+10/Sep/2018 14:13:34 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+10/Sep/2018 14:26:45 - Alterado o tema para done1
+10/Sep/2018 14:26:51 - Alterado o tema para vintage
+10/Sep/2018 14:26:55 - Alterado o tema para stormy_hues
+10/Sep/2018 14:26:59 - Alterado o tema para minimal
+10/Sep/2018 14:27:04 - Alterado o tema para carbongreen
+10/Sep/2018 14:27:09 - Alterado o tema para darkcyan
+10/Sep/2018 14:27:12 - Alterado o tema para darkorange
+10/Sep/2018 14:27:15 - Alterado o tema para teal
+10/Sep/2018 14:27:18 - Alterado o tema para darkred
+10/Sep/2018 14:27:22 - Alterado o tema para default
+10/Sep/2018 18:05:17 - Catarina chegou a casa enviado para Fernando
+10/Sep/2018 18:37:13 - Catarina chegou a casa enviado para Fernando
+10/Sep/2018 19:52:51 - Alterado o tema para darkred
+10/Sep/2018 22:26:23 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+10/Sep/2018 22:38:03 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+11/Sep/2018 07:09:09 - Alterado o tema para darkorange
+11/Sep/2018 11:38:54 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+11/Sep/2018 14:05:42 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+11/Sep/2018 17:40:04 - Catarina chegou a casa enviado para Fernando
+11/Sep/2018 18:16:58 - Catarina chegou a casa enviado para Fernando
+11/Sep/2018 19:15:02 - Alterado o tema para darkorange
+11/Sep/2018 19:16:00 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+11/Sep/2018 19:16:00 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+11/Sep/2018 19:51:08 - Alterado o tema para darkred
+11/Sep/2018 22:31:29 - Alterado o tema para darkorange
+11/Sep/2018 22:32:05 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+12/Sep/2018 00:35:57 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+12/Sep/2018 10:11:59 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+12/Sep/2018 10:39:53 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+12/Sep/2018 12:33:14 - Alterado o tema para darkorange
+12/Sep/2018 12:34:46 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+12/Sep/2018 12:44:34 - Alterado o tema para darkorange
+12/Sep/2018 12:45:54 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+12/Sep/2018 13:50:43 - Alterado o tema para darkorange
+12/Sep/2018 13:51:37 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+12/Sep/2018 14:33:42 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+12/Sep/2018 15:14:58 - Alterado o tema para darkorange
+12/Sep/2018 15:16:43 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+12/Sep/2018 15:16:58 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+12/Sep/2018 19:49:24 - Alterado o tema para darkred
+12/Sep/2018 21:42:50 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+12/Sep/2018 22:15:42 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+12/Sep/2018 22:27:06 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+13/Sep/2018 07:11:09 - Alterado o tema para darkorange
+13/Sep/2018 12:32:02 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+13/Sep/2018 12:43:12 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+13/Sep/2018 14:21:05 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+13/Sep/2018 14:47:52 - Alterado o tema para darkorange
+13/Sep/2018 14:48:32 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+13/Sep/2018 15:36:01 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+13/Sep/2018 19:47:41 - Alterado o tema para darkred
+13/Sep/2018 23:34:33 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+14/Sep/2018 07:12:10 - Alterado o tema para darkorange
+14/Sep/2018 11:54:45 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+14/Sep/2018 16:21:15 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+14/Sep/2018 17:02:05 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+14/Sep/2018 17:50:18 - Alterado o tema para darkorange
+14/Sep/2018 17:51:51 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+14/Sep/2018 17:52:00 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+14/Sep/2018 18:26:03 - Alterado o tema para darkorange
+14/Sep/2018 18:27:26 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+14/Sep/2018 18:27:57 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+14/Sep/2018 18:35:10 - Alterado o tema para darkorange
+14/Sep/2018 18:36:00 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+14/Sep/2018 18:36:00 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+14/Sep/2018 18:53:31 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+14/Sep/2018 19:45:58 - Alterado o tema para darkred
+15/Sep/2018 07:13:10 - Alterado o tema para darkorange
+15/Sep/2018 13:14:53 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+15/Sep/2018 15:00:53 - Alterado o tema para darkorange
+15/Sep/2018 15:03:45 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+15/Sep/2018 15:53:45 - Alterado o tema para darkorange
+15/Sep/2018 15:56:21 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+15/Sep/2018 16:25:31 - Alterado o tema para darkorange
+15/Sep/2018 16:29:48 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+15/Sep/2018 18:56:15 - A máquina da loiça foi desligada e estava a 0 watts, 0.0 amperes e 0 volts
+15/Sep/2018 19:44:16 - Alterado o tema para darkred
+16/Sep/2018 07:14:12 - Alterado o tema para darkorange
+16/Sep/2018 10:19:04 - Alterado o tema para darkorange
+16/Sep/2018 10:33:14 - Parou de abrir - vou definir o slider com 33.0
+16/Sep/2018 10:33:37 - Parou de abrir - vou definir o slider com 100.0
+16/Sep/2018 10:33:53 - Parou de fechar - vou definir o slider com 0.0
+16/Sep/2018 10:49:33 - Alterado o tema para darkorange
+16/Sep/2018 14:04:03 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+16/Sep/2018 19:42:31 - Alterado o tema para darkred
+17/Sep/2018 07:15:12 - Alterado o tema para darkorange
+17/Sep/2018 14:30:40 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+17/Sep/2018 19:40:48 - Alterado o tema para darkred
+18/Sep/2018 07:16:13 - Alterado o tema para darkorange
+18/Sep/2018 11:28:18 - Alterado o tema para darkorange
+18/Sep/2018 14:56:18 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+18/Sep/2018 18:20:41 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+18/Sep/2018 18:42:02 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+18/Sep/2018 19:39:04 - Alterado o tema para darkred
+19/Sep/2018 07:17:14 - Alterado o tema para darkorange
+19/Sep/2018 11:38:57 - Alterado o tema para darkorange
+19/Sep/2018 12:48:49 - Alterado o tema para darkorange
+19/Sep/2018 12:50:01 - EEnviada mensagem para Fernando e Catarina para levar o lixo para a rua
+19/Sep/2018 15:12:48 - Alterado o tema para darkorange
+19/Sep/2018 15:49:06 - Alterado o tema para darkorange
+19/Sep/2018 17:42:47 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+19/Sep/2018 18:16:11 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+19/Sep/2018 19:06:53 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+19/Sep/2018 19:37:20 - Alterado o tema para darkred
+19/Sep/2018 21:00:10 - EEnviada mensagem para Fernando e Catarina para levar o lixo para a rua
+20/Sep/2018 07:18:15 - Alterado o tema para darkorange
+20/Sep/2018 10:27:47 - Alterado o tema para darkorange
+20/Sep/2018 19:35:36 - Alterado o tema para darkred
+21/Sep/2018 07:19:16 - Alterado o tema para darkorange
+21/Sep/2018 09:44:08 - Alterado o tema para darkorange
+21/Sep/2018 19:33:53 - Alterado o tema para darkred
+21/Sep/2018 21:00:02 - EEnviada mensagem para Fernando e Catarina para levar o lixo para a rua
+22/Sep/2018 07:20:17 - Alterado o tema para darkorange
+22/Sep/2018 16:23:14 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+22/Sep/2018 19:32:09 - Alterado o tema para darkred
+23/Sep/2018 07:21:20 - Alterado o tema para darkorange
+23/Sep/2018 15:50:44 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+23/Sep/2018 19:30:25 - Alterado o tema para darkred
+24/Sep/2018 07:22:20 - Alterado o tema para darkorange
+24/Sep/2018 12:18:53 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+24/Sep/2018 16:39:38 - Alterado o tema para darkorange
+24/Sep/2018 16:40:55 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+24/Sep/2018 17:36:17 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+24/Sep/2018 19:28:41 - Alterado o tema para darkred
+24/Sep/2018 21:00:10 - EEnviada mensagem para Fernando e Catarina para levar o lixo para a rua
+24/Sep/2018 22:45:14 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+25/Sep/2018 07:23:22 - Alterado o tema para darkorange
+25/Sep/2018 11:30:14 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+25/Sep/2018 16:39:32 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+25/Sep/2018 16:51:03 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+25/Sep/2018 17:02:16 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+25/Sep/2018 19:26:58 - Alterado o tema para darkred
+26/Sep/2018 07:24:24 - Alterado o tema para darkorange
+26/Sep/2018 11:49:26 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+26/Sep/2018 12:10:07 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+26/Sep/2018 12:26:47 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+26/Sep/2018 16:42:39 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+26/Sep/2018 19:25:14 - Alterado o tema para darkred
+26/Sep/2018 21:00:10 - EEnviada mensagem para Fernando e Catarina para levar o lixo para a rua
+27/Sep/2018 07:25:26 - Alterado o tema para darkorange
+27/Sep/2018 13:47:33 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+27/Sep/2018 14:11:59 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+27/Sep/2018 15:38:05 - Alterado o tema para darkorange
+27/Sep/2018 15:39:55 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+27/Sep/2018 18:00:55 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+27/Sep/2018 18:18:45 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+27/Sep/2018 19:06:05 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+27/Sep/2018 19:18:25 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+27/Sep/2018 19:23:31 - Alterado o tema para darkred
+27/Sep/2018 20:11:41 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+28/Sep/2018 07:26:28 - Alterado o tema para darkorange
+28/Sep/2018 14:06:16 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+28/Sep/2018 14:28:50 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+28/Sep/2018 16:14:04 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+28/Sep/2018 16:31:06 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+28/Sep/2018 17:19:08 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+28/Sep/2018 17:49:06 - Temperatura no piso 1 elevada - enviado para Fernando e Catarina
+28/Sep/2018 19:21:48 - Alterado o tema para darkred
+28/Sep/2018 21:00:10 - EEnviada mensagem para Fernando e Catarina para levar o lixo para a rua
+29/Sep/2018 07:27:30 - Alterado o tema para darkorange
+29/Sep/2018 15:54:01 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+29/Sep/2018 16:51:24 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+29/Sep/2018 17:07:57 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+29/Sep/2018 17:30:50 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+29/Sep/2018 17:53:25 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+29/Sep/2018 19:20:05 - Alterado o tema para darkred
+30/Sep/2018 07:28:33 - Alterado o tema para darkorange
+30/Sep/2018 16:16:34 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+30/Sep/2018 19:18:23 - Alterado o tema para darkred
+01/Oct/2018 07:29:36 - Alterado o tema para darkorange
+01/Oct/2018 18:17:28 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+01/Oct/2018 18:29:15 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+01/Oct/2018 19:16:41 - Alterado o tema para darkred
+01/Oct/2018 21:00:01 - EEnviada mensagem para Fernando e Catarina para levar o lixo para a rua
+02/Oct/2018 07:30:39 - Alterado o tema para darkorange
+02/Oct/2018 17:34:16 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+02/Oct/2018 19:14:59 - Alterado o tema para darkred
+03/Oct/2018 07:31:42 - Alterado o tema para darkorange
+03/Oct/2018 09:52:41 - Alterado o tema para darkorange
+03/Oct/2018 16:16:25 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+03/Oct/2018 16:27:56 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+03/Oct/2018 16:44:43 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+03/Oct/2018 18:49:59 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+03/Oct/2018 19:00:42 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+03/Oct/2018 19:13:17 - Alterado o tema para darkred
+03/Oct/2018 21:00:10 - EEnviada mensagem para Fernando e Catarina para levar o lixo para a rua
+04/Oct/2018 07:32:45 - Alterado o tema para darkorange
+04/Oct/2018 19:11:36 - Alterado o tema para darkred
+05/Oct/2018 07:33:49 - Alterado o tema para darkorange
+05/Oct/2018 21:00:02 - Enviada mensagem para Fernando e Catarina para levar o lixo para a rua
+08/Oct/2018 21:00:02 - Enviada mensagem para Fernando e Catarina para levar o lixo para a rua
+10/Oct/2018 21:00:10 - Enviada mensagem para Fernando e Catarina para levar o lixo para a rua
+12/Oct/2018 21:00:02 - Enviada mensagem para Fernando e Catarina para levar o lixo para a rua
+15/Oct/2018 18:41:37 - Catarina chegou a casa enviado para Fernando
+15/Oct/2018 21:00:10 - Enviada mensagem para Fernando e Catarina para levar o lixo para a rua
+17/Oct/2018 21:00:02 - Enviada mensagem para Fernando e Catarina para levar o lixo para a rua
+18/Oct/2018 18:04:18 - Catarina chegou a casa enviado para Fernando
+18/Oct/2018 18:33:53 - Catarina chegou a casa enviado para Fernando
+19/Oct/2018 21:00:10 - Enviada mensagem para Fernando e Catarina para levar o lixo para a rua
+20/Oct/2018 13:51:22 - A porta da garagem foi aberta
+22/Oct/2018 21:00:10 - Enviada mensagem para Fernando e Catarina para levar o lixo para a rua
+23/Oct/2018 16:43:37 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+23/Oct/2018 16:56:53 - Temperatura no piso 0 elevada - enviado para Fernando e Catarina
+24/Oct/2018 21:00:02 - Enviada mensagem para Fernando e Catarina para levar o lixo para a rua

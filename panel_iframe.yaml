@@ -12,3 +12,12 @@ router_wifi:
     url: !secret IP_router
     icon: mdi:router-wireless
 
+tasmoadmin:
+    title: TasmoAdmin
+    icon: mdi:lightbulb-on
+    url: http://casaprazins.duckdns.org:8124
+
+portainer:
+    title: Portainer
+    icon: mdi:lightbulb-on
+    url: http://casaprazins.duckdns.org:9000    

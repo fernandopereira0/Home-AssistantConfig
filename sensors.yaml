@@ -1,4 +1,26 @@
 #######################################################################################################################
+#  _   _           _     _                    
+# | | | |  _ __   | |_  (_)  _ __ ___     ___ 
+# | | | | | '_ \  | __| | | | '_ ` _ \   / _ \
+# | |_| | | |_) | | |_  | | | | | | | | |  __/
+#  \___/  | .__/   \__| |_| |_| |_| |_|  \___|
+#         |_|                                 
+#######################################################################################################################
+
+  - platform: uptime
+    name: Tempo Online
+    unit_of_measurement: hours
+    
+  - platform: version
+    name: "Versão atual"
+  
+  - platform: rest
+    name: "Versão disponível"
+    resource: https://pypi.python.org/pypi/homeassistant/json
+    value_template: '{{ value_json.info.version }}'
+    scan_interval: 3600
+
+#######################################################################################################################
 #  ____    ____    _                              _   
 # / ___|  / ___|  | |         ___    ___   _ __  | |_ 
 # \___ \  \___ \  | |        / __|  / _ \ | '__| | __|
@@ -12,6 +34,62 @@
     scan_interval: 10800
     command: "ssl-cert-check -b -c /etc/letsencrypt/live/casaprazins.duckdns.org/cert.pem | awk '{ print $NF }'"
 
+#######################################################################################################################                                      
+#  ____    _          _     _           _                       
+# | __ )  (_)  _ __  | |_  | |__     __| |   __ _   _   _   ___ 
+# |  _ \  | | | '__| | __| | '_ \   / _` |  / _` | | | | | / __|
+# | |_) | | | | |    | |_  | | | | | (_| | | (_| | | |_| | \__ \
+# |____/  |_| |_|     \__| |_| |_|  \__,_|  \__,_|  \__, | |___/
+#                                                   |___/       
+#######################################################################################################################                                                                                     
+  - platform: date_countdown
+    name: Aniversário Catarina
+    date: "20-07-2019 10:00"
+    
+  - platform: date_countdown
+    name: Aniversário Fernando
+    date: "07-07-2019 22:00"
+  
+  - platform: date_countdown
+    name: Aniversário Margarida
+    date: "28-04-2019 10:00"  
+  
+  - platform: date_countdown
+    name: Aniversário Inês
+    date: "28-08-2019 23:42"  
+    
+  - platform: template
+    sensors:
+      catarina_birthday_days:
+        friendly_name: 'Aniversário Catarina'
+        unit_of_measurement: 'days to got'
+        value_template: >-
+          {{ states.sensor.aniversario_catarina.attributes.days }}
+  
+  - platform: template
+    sensors:
+      fernando_birthday_days:
+        unit_of_measurement: 'days to go'
+        friendly_name: 'Aniversário Fernando'
+        value_template: >-
+          {{ states.sensor.aniversario_fernando.attributes.days }}
+  
+  - platform: template
+    sensors:
+      margarida_birthday_days:
+        unit_of_measurement: 'days to go'
+        friendly_name: 'Aniversário Margariga'
+        value_template: >-
+          {{ states.sensor.aniversario_margarida.attributes.days }}
+          
+  - platform: template
+    sensors:
+      ines_birthday_days:
+        unit_of_measurement: 'days to go'
+        friendly_name: 'Aniversário Inês'
+        value_template: >-
+          {{ states.sensor.aniversario_ines.attributes.days }}
+          
 #######################################################################################################################    
 # __        __                 _     _                                                 _   _          _     _                 
 # \ \      / /   ___    __ _  | |_  | |__     ___   _ __     _ __    _ __    ___    __| | (_)   ___  | |_  (_)   ___    _ __  
@@ -22,34 +100,21 @@
 #######################################################################################################################
   - platform: yr
     name: Meteorologia
-
-#######################################################################################################################    
-#  _____                                                    _                         
-# |_   _|   ___   _ __ ___    _ __     ___   _ __    __ _  | |_   _   _   _ __    ___ 
-#   | |    / _ \ | '_ ` _ \  | '_ \   / _ \ | '__|  / _` | | __| | | | | | '__|  / _ \
-#   | |   |  __/ | | | | | | | |_) | |  __/ | |    | (_| | | |_  | |_| | | |    |  __/
-#   |_|    \___| |_| |_| |_| | .__/   \___| |_|     \__,_|  \__|  \__,_| |_|     \___|
-#                            |_|                                                      
-#######################################################################################################################
-  - platform: mitemp_bt
-    mac: '4C:65:A8:D3:CB:D8'
-    name: Piso 0
-    force_update: false
-    median: 1
+    
+  - platform: darksky
+    api_key: !secret DarkSkyAPI_key
+    language: pt
     monitored_conditions:
+      - summary
+      - precip_type
+      - precip_probability
       - temperature
       - humidity
-      - battery
-
-  - platform: mitemp_bt
-    mac: '4C:65:A8:D3:CC:A0'
-    name: Piso 1
-    force_update: false
-    median: 1
-    monitored_conditions:
-      - temperature
-      - humidity
-      - battery
+      - temperature_max
+      - temperature_min
+      - hourly_summary
+      - daily_summary  
+  
 
 #######################################################################################################################      
 #  ____    _                                 _   _                    _                 
@@ -74,83 +139,7 @@
       - type: processor_use
       - type: last_boot
       - type: since_last_boot
-
-#######################################################################################################################      
-#      _   _         _                                _                     
-#   __| | (_)  ___  | |__   __      __   __ _   ___  | |__     ___   _ __   
-#  / _` | | | / __| | '_ \  \ \ /\ / /  / _` | / __| | '_ \   / _ \ | '__|  
-# | (_| | | | \__ \ | | | |  \ V  V /  | (_| | \__ \ | | | | |  __/ | |     
-#  \__,_| |_| |___/ |_| |_|   \_/\_/    \__,_| |___/ |_| |_|  \___| |_|     
-#
-#######################################################################################################################
-                                        
-#watts
-  - platform: mqtt
-    name: "Maquina da Loiça Wats"
-    state_topic: "tele/maquinaloica/SENSOR"
-    value_template: '{{ value_json["ENERGY"]["Power"] }}'
-    unit_of_measurement: "W"
-    icon: mdi:power-plug
-#Amperes #
-  - platform: mqtt
-    name: "Maquina da Loiça Amperes"
-    state_topic: "tele/maquinaloica/SENSOR"
-    value_template: '{{ value_json["ENERGY"]["Current"] }}'
-    unit_of_measurement: "A"
-    icon: mdi:flash-outline
-#Voltagem
-  - platform: mqtt
-    name: "Maquina da Loiça Voltagem"
-    state_topic: "tele/maquinaloica/SENSOR"
-    value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
-    unit_of_measurement: "V"
-    icon: mdi:led-variant-on
-#Hoje kWh 
-  - platform: mqtt
-    name: "Maquina da Loiça Hoje"
-    state_topic: "tele/maquinaloica/SENSOR"
-    value_template: '{{ value_json["ENERGY"]["Today"] }}'
-    unit_of_measurement: "kWh"
-    icon: mdi:calendar-check
-#Hoje € 
-  - platform: mqtt
-    name: "Maquina da Loiça Hoje (€)"
-    state_topic: "tele/maquinaloica/SENSOR"
-    value_template: >-
-      {{states.sensor.maquina_da_loica_hoje.state | multiply(0.1603) | round(4)}}
-    unit_of_measurement: "€"
-    icon: mdi:cash-usd
-#Ontem kWh
-  - platform: mqtt
-    name: "Maquina da Loiça Ontem"
-    state_topic: "tele/maquinaloica/SENSOR"
-    value_template: '{{ value_json["ENERGY"]["Yesterday"] }}'
-    unit_of_measurement: "kWh"  
-    icon: mdi:calendar-clock
-#Ontem €
-  - platform: mqtt
-    name: "Maquina da Loiça Ontem (€)"
-    state_topic: "tele/maquinaloica/SENSOR"
-    value_template: >-
-      {{states.sensor.maquina_da_loica_ontem.state | multiply(0.1603) | round(4)}}
-    unit_of_measurement: "€"
-    icon: mdi:cash-usd
-#Total kWh 
-  - platform: mqtt
-    name: "Maquina da Loiça Total"
-    state_topic: "tele/maquinaloica/SENSOR"
-    value_template: '{{ value_json["ENERGY"]["Total"] }}'
-    unit_of_measurement: "kWh"
-    icon: mdi:calendar-multiple
-#Total €
-  - platform: mqtt
-    name: "Maquina da Loiça Total (€)"
-    state_topic: "tele/maquinaloica/SENSOR"
-    value_template: >-
-      {{states.sensor.maquina_da_loica_total.state | multiply(0.1603) | round(4)}}
-    unit_of_measurement: "€"
-    icon: mdi:cash-usd
-
+    
 
 #######################################################################################################################    
 #                                  _            _                                   _     _     _                    
@@ -187,3 +176,55 @@
     origin: zone.escola_da_margarida
     destination: zone.home
     icon: mdi:bus-school
+
+#######################################################################################################################
+#  _   _           _     _    __   _                  _     _                       
+# | \ | |   ___   | |_  (_)  / _| (_)   ___    __ _  | |_  (_)   ___    _ __    ___ 
+# |  \| |  / _ \  | __| | | | |_  | |  / __|  / _` | | __| | |  / _ \  | '_ \  / __|
+# | |\  | | (_) | | |_  | | |  _| | | | (__  | (_| | | |_  | | | (_) | | | | | \__ \
+# |_| \_|  \___/   \__| |_| |_|   |_|  \___|  \__,_|  \__| |_|  \___/  |_| |_| |___/
+#                                                                                       
+#######################################################################################################################
+#### 10
+  - platform: command_line
+    name: "notificação 10"
+    command: "tail -n 10 /home/homeassistant/.homeassistant/notifications.txt | sed '2,10d' $1"
+#### 09
+  - platform: command_line
+    name: "notificação 09"
+    command: "tail -n 9 /home/homeassistant/.homeassistant/notifications.txt | sed '2,9d' $1"
+#### 08
+  - platform: command_line
+    name: "notificação 08"
+    command: "tail -n 8 /home/homeassistant/.homeassistant/notifications.txt | sed '2,8d' $1"
+#### 07
+  - platform: command_line
+    name: "notificação 7"
+    command: "tail -n 07 /home/homeassistant/.homeassistant/notifications.txt | sed '2,7d' $1"
+#### 06
+  - platform: command_line
+    name: "notificação 06"
+    command: "tail -n 6 /home/homeassistant/.homeassistant/notifications.txt | sed '2,6d' $1"
+#### 05
+  - platform: command_line
+    name: "notificação 05"
+    command: "tail -n 5 /home/homeassistant/.homeassistant/notifications.txt | sed '2,5d' $1"
+#### 04
+  - platform: command_line
+    name: "notificação 04"
+    command: "tail -n 4 /home/homeassistant/.homeassistant/notifications.txt | sed '2,4d' $1"
+#### 03
+  - platform: command_line
+    name: "notificação 03"
+    command: "tail -n 3 /home/homeassistant/.homeassistant/notifications.txt | sed '2,3d' $1"
+#### 02
+  - platform: command_line
+    name: "notificação 02"
+    command: "tail -n 2 /home/homeassistant/.homeassistant/notifications.txt | sed '2,2d' $1"
+#### 01
+  - platform: command_line
+    name: "notificação 01"
+    command: "tail -n 1 /home/homeassistant/.homeassistant/notifications.txt | sed '2,1d' $1"
+    
+    
+    

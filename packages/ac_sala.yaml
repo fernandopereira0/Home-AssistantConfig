@@ -1,0 +1,230 @@
+
+#######################################################################################################################      
+#      ___           ___                                                                       ___           ___                    ___           ___           ___           ___     
+#     /  /\         /  /\                               ___           ___        ___          /__/\         /  /\                  /  /\         /  /\         /  /\         /__/\    
+#    /  /::\       /  /:/                              /  /\         /__/\      /  /\         \  \:\       /  /:/_                /  /::\       /  /::\       /  /::\       |  |::\   
+#   /  /:/\:\     /  /:/                ___     ___   /  /:/         \  \:\    /  /:/          \  \:\     /  /:/ /\              /  /:/\:\     /  /:/\:\     /  /:/\:\      |  |:|:\  
+#  /  /:/~/::\   /  /:/  ___           /__/\   /  /\ /__/::\          \  \:\  /__/::\      _____\__\:\   /  /:/_/::\            /  /:/~/:/    /  /:/  \:\   /  /:/  \:\   __|__|:|\:\ 
+# /__/:/ /:/\:\ /__/:/  /  /\          \  \:\ /  /:/ \__\/\:\__   ___  \__\:\ \__\/\:\__  /__/::::::::\ /__/:/__\/\:\          /__/:/ /:/___ /__/:/ \__\:\ /__/:/ \__\:\ /__/::::| \:\
+# \  \:\/:/__\/ \  \:\ /  /:/           \  \:\  /:/     \  \:\/\ /__/\ |  |:|    \  \:\/\ \  \:\~~\~~\/ \  \:\ /~~/:/          \  \:\/:::::/ \  \:\ /  /:/ \  \:\ /  /:/ \  \:\~~\__\/
+#  \  \::/       \  \:\  /:/             \  \:\/:/       \__\::/ \  \:\|  |:|     \__\::/  \  \:\  ~~~   \  \:\  /:/            \  \::/~~~~   \  \:\  /:/   \  \:\  /:/   \  \:\      
+#   \  \:\        \  \:\/:/               \  \::/        /__/:/   \  \:\__|:|     /__/:/    \  \:\        \  \:\/:/              \  \:\        \  \:\/:/     \  \:\/:/     \  \:\     
+#    \  \:\        \  \::/                 \__\/         \__\/     \__\::::/      \__\/      \  \:\        \  \::/                \  \:\        \  \::/       \  \::/       \  \:\    
+#     \__\/         \__\/                                              ~~~~                   \__\/         \__\/                  \__\/         \__\/         \__\/         \__\/    
+#######################################################################################################################
+
+#homeassistant:
+##   ____                 _                         _              
+##  / ___|  _   _   ___  | |_    ___    _ __ ___   (_)  ____   ___ 
+## | |     | | | | / __| | __|  / _ \  | '_ ` _ \  | | |_  /  / _ \
+## | |___  | |_| | \__ \ | |_  | (_) | | | | | | | | |  / /  |  __/
+##  \____|  \__,_| |___/  \__|  \___/  |_| |_| |_| |_| /___|  \___|
+#
+#  customize:
+#    switch.ac_sala:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    switch.ac_sala_onoff:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.ac_sala_wats:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.ac_sala_amperes:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.ac_sala_voltagem:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.ac_sala_hoje:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.ac_sala_hoje_:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.ac_sala_ontem:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.ac_sala_ontem_:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.ac_sala_total:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.ac_sala_total_:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    climate.ac_sala:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+
+#  ____               _   _            _     
+# / ___|  __      __ (_) | |_    ___  | |__  
+# \___ \  \ \ /\ / / | | | __|  / __| | '_ \ 
+#  ___) |  \ V  V /  | | | |_  | (__  | | | |
+# |____/    \_/\_/   |_|  \__|  \___| |_| |_|
+  switch:
+    - platform: mqtt
+      name: "AC Sala ON/OFF"
+      state_topic: "stat/acsala/POWER"
+      command_topic: "cmnd/acsala/power"
+      availability_topic: "tele/acsala/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false
+#  ____                                      
+# / ___|    ___   _ __    ___    ___    _ __ 
+# \___ \   / _ \ | '_ \  / __|  / _ \  | '__|
+#  ___) | |  __/ | | | | \__ \ | (_) | | |   
+# |____/   \___| |_| |_| |___/  \___/  |_|     
+  sensor:
+  #watts
+    - platform: mqtt
+      name: "AC Sala Wats"
+      state_topic: "tele/acsala/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Power"] }}'
+      unit_of_measurement: "W"
+      icon: mdi:power-plug
+  #Amperes #
+    - platform: mqtt
+      name: "AC Sala Amperes"
+      state_topic: "tele/acsala/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Current"] }}'
+      unit_of_measurement: "A"
+      icon: mdi:flash-outline
+  #Voltagem
+    - platform: mqtt
+      name: "AC Sala Voltagem"
+      state_topic: "tele/acsala/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+      unit_of_measurement: "V"
+      icon: mdi:led-variant-on
+  #Hoje kWh 
+    - platform: mqtt
+      name: "AC Sala Hoje"
+      state_topic: "tele/acsala/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Today"] }}'
+      unit_of_measurement: "kWh"
+      icon: mdi:calendar-check
+  #Hoje € 
+    - platform: mqtt
+      name: "AC Sala Hoje (€)"
+      state_topic: "tele/acsala/SENSOR"
+      value_template: >-
+        {{states.sensor.ac_sala_hoje.state | multiply(0.1603) | round(4)}}
+      unit_of_measurement: "€"
+      icon: mdi:cash-usd
+  #Ontem kWh
+    - platform: mqtt
+      name: "AC Sala Ontem"
+      state_topic: "tele/acsala/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Yesterday"] }}'
+      unit_of_measurement: "kWh"  
+      icon: mdi:calendar-clock
+  #Ontem €
+    - platform: mqtt
+      name: "AC Sala Ontem (€)"
+      state_topic: "tele/acsala/SENSOR"
+      value_template: >-
+        {{states.sensor.ac_sala_ontem.state | multiply(0.1603) | round(4)}}
+      unit_of_measurement: "€"
+      icon: mdi:cash-usd
+  #Total kWh 
+    - platform: mqtt
+      name: "AC Sala Total"
+      state_topic: "tele/acsala/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Total"] }}'
+      unit_of_measurement: "kWh"
+      icon: mdi:calendar-multiple
+  #Total €
+    - platform: mqtt
+      name: "AC Sala Total (€)"
+      state_topic: "tele/acsala/SENSOR"
+      value_template: >-
+        {{states.sensor.ac_sala_total.state | multiply(0.1603) | round(4)}}
+      unit_of_measurement: "€"
+      icon: mdi:cash-usd 
+
+#   ____   _   _                       _          
+#  / ___| | | (_)  _ __ ___     __ _  | |_    ___ 
+# | |     | | | | | '_ ` _ \   / _` | | __|  / _ \
+# | |___  | | | | | | | | | | | (_| | | |_  |  __/
+#  \____| |_| |_| |_| |_| |_|  \__,_|  \__|  \___|
+
+  climate:
+     - platform: broadlink
+       name: AC Sala
+       host: !secret broadlinkSala_IP
+       mac: '78:0f:77:18:4a:be'
+       ircodes_ini: 'broadlink_climate_codes/baxi.ini'
+       min_temp: 16
+       max_temp: 32
+       target_temp: 20
+       target_temp_step: 1
+       temp_sensor: sensor.piso_0_temperature
+       default_operation: 'off'
+       default_fan_mode: auto
+       customize:
+         operations:
+           - 'off'
+           - cool
+           - heat
+           #- 'cool-ECO'
+         fan_modes:
+           - low
+           - mid
+           - high
+           - auto
+      
+#     _              _                                 _     _                 
+#    / \     _   _  | |_    ___    _ __ ___     __ _  | |_  (_)   ___    _ __  
+#   / _ \   | | | | | __|  / _ \  | '_ ` _ \   / _` | | __| | |  / _ \  | '_ \ 
+#  / ___ \  | |_| | | |_  | (_) | | | | | | | | (_| | | |_  | | | (_) | | | | |
+# /_/   \_\  \__,_|  \__|  \___/  |_| |_| |_|  \__,_|  \__| |_|  \___/  |_| |_|
+  automation:
+    - id: ac_sala_on_restart
+      alias: 'Atualizar ac_sala ao reiniciar HA'
+      hide_entity: True
+      trigger:
+        - platform: homeassistant
+          event: start
+      action:
+        - service: mqtt.publish
+          data:
+            topic: "cmnd/acsala/power"
+            payload: ""
+            qos: 0
+            retain: 0
+    
+#   ____                                
+#  / ___|  _ __    ___    _   _   _ __  
+# | |  _  | '__|  / _ \  | | | | | '_ \ 
+# | |_| | | |    | (_) | | |_| | | |_) |
+#  \____| |_|     \___/   \__,_| | .__/ 
+#                                |_|              
+  group:
+    ac_sala_pow:
+        name: Consumo AC Sala
+        view: no
+        entities:
+            - switch.ac_sala_onoff
+            - sensor.ac_sala_wats
+            - sensor.ac_sala_amperes
+            - sensor.ac_sala_voltagem
+            - sensor.ac_sala_hoje
+            - sensor.ac_sala_hoje_
+            - sensor.ac_sala_ontem
+            - sensor.ac_sala_ontem_
+            - sensor.ac_sala_total
+            - sensor.ac_sala_total_
+    ac_sala:
+        name: AC da Sala
+        view: no
+        entities:
+            - group.ac_sala_pow
+            - climate.ac_sala
+            - binary_sensor.broadlink_sala
+            

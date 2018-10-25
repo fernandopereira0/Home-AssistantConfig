@@ -1,0 +1,223 @@
+
+#######################################################################################################################      
+#     _____          ___                                   ___           ___                    ___           ___           ___           ___                       ___           ___     
+#    /  /::\        /  /\          ___       ___          /__/\         /  /\                  /__/\         /  /\         /  /\         /__/\        ___          /__/\         /  /\    
+#   /  /:/\:\      /  /::\        /__/|     /  /\         \  \:\       /  /:/_                |  |::\       /  /::\       /  /:/         \  \:\      /  /\         \  \:\       /  /:/_   
+#  /  /:/  \:\    /  /:/\:\      |  |:|    /  /:/          \  \:\     /  /:/ /\               |  |:|:\     /  /:/\:\     /  /:/           \__\:\    /  /:/          \  \:\     /  /:/ /\  
+# /__/:/ \__\:|  /  /:/~/:/      |  |:|   /__/::\      _____\__\:\   /  /:/_/::\            __|__|:|\:\   /  /:/~/::\   /  /:/  ___   ___ /  /::\  /__/::\      _____\__\:\   /  /:/ /:/_ 
+# \  \:\ /  /:/ /__/:/ /:/___  __|__|:|   \__\/\:\__  /__/::::::::\ /__/:/__\/\:\          /__/::::| \:\ /__/:/ /:/\:\ /__/:/  /  /\ /__/\  /:/\:\ \__\/\:\__  /__/::::::::\ /__/:/ /:/ /\
+#  \  \:\  /:/  \  \:\/:::::/ /__/::::\      \  \:\/\ \  \:\~~\~~\/ \  \:\ /~~/:/          \  \:\~~\__\/ \  \:\/:/__\/ \  \:\ /  /:/ \  \:\/:/__\/    \  \:\/\ \  \:\~~\~~\/ \  \:\/:/ /:/
+#   \  \:\/:/    \  \::/~~~~     ~\~~\:\      \__\::/  \  \:\  ~~~   \  \:\  /:/            \  \:\        \  \::/       \  \:\  /:/   \  \::/          \__\::/  \  \:\  ~~~   \  \::/ /:/ 
+#    \  \::/      \  \:\           \  \:\     /__/:/    \  \:\        \  \:\/:/              \  \:\        \  \:\        \  \:\/:/     \  \:\          /__/:/    \  \:\        \  \:\/:/  
+#     \__\/        \  \:\           \__\/     \__\/      \  \:\        \  \::/                \  \:\        \  \:\        \  \::/       \  \:\         \__\/      \  \:\        \  \::/   
+#                   \__\/                                 \__\/         \__\/                  \__\/         \__\/         \__\/         \__\/                     \__\/         \__\/    
+#######################################################################################################################
+
+#homeassistant:
+##   ____                 _                         _              
+##  / ___|  _   _   ___  | |_    ___    _ __ ___   (_)  ____   ___ 
+## | |     | | | | / __| | __|  / _ \  | '_ ` _ \  | | |_  /  / _ \
+## | |___  | |_| | \__ \ | |_  | (_) | | | | | | | | |  / /  |  __/
+##  \____|  \__,_| |___/  \__|  \___/  |_| |_| |_| |_| /___|  \___|
+#
+#  customize:
+#    switch.maquina_de_secar:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.maquina_de_secar_wats:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.maquina_de_secar_amperes:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.maquina_de_secar_voltagem:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.maquina_de_secar_hoje:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.maquina_de_secar_hoje_:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.maquina_de_secar_ontem:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.maquina_de_secar_ontem_:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.maquina_de_secar_total:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+#    sensor.maquina_de_secar_total_:
+#      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+
+#  ____               _   _            _     
+# / ___|  __      __ (_) | |_    ___  | |__  
+# \___ \  \ \ /\ / / | | | __|  / __| | '_ \ 
+#  ___) |  \ V  V /  | | | |_  | (__  | | | |
+# |____/    \_/\_/   |_|  \__|  \___| |_| |_|
+  switch:
+    - platform: mqtt
+      name: "Maquina de Secar"
+      state_topic: "stat/maquinasecar/POWER"
+      command_topic: "cmnd/maquinasecar/power"
+      availability_topic: "tele/maquinasecar/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false
+#  ____                                      
+# / ___|    ___   _ __    ___    ___    _ __ 
+# \___ \   / _ \ | '_ \  / __|  / _ \  | '__|
+#  ___) | |  __/ | | | | \__ \ | (_) | | |   
+# |____/   \___| |_| |_| |___/  \___/  |_|     
+  sensor:
+  #watts
+    - platform: mqtt
+      name: "Maquina de Secar Wats"
+      state_topic: "tele/maquinasecar/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Power"] }}'
+      unit_of_measurement: "W"
+      icon: mdi:power-plug
+  #Amperes #
+    - platform: mqtt
+      name: "Maquina de Secar Amperes"
+      state_topic: "tele/maquinasecar/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Current"] }}'
+      unit_of_measurement: "A"
+      icon: mdi:flash-outline
+  #Voltagem
+    - platform: mqtt
+      name: "Maquina de Secar Voltagem"
+      state_topic: "tele/maquinasecar/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+      unit_of_measurement: "V"
+      icon: mdi:led-variant-on
+  #Hoje kWh 
+    - platform: mqtt
+      name: "Maquina de Secar Hoje"
+      state_topic: "tele/maquinasecar/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Today"] }}'
+      unit_of_measurement: "kWh"
+      icon: mdi:calendar-check
+  #Hoje € 
+    - platform: mqtt
+      name: "Maquina de Secar Hoje (€)"
+      state_topic: "tele/maquinasecar/SENSOR"
+      value_template: >-
+        {{states.sensor.maquina_de_secar_hoje.state | multiply(0.1603) | round(4)}}
+      unit_of_measurement: "€"
+      icon: mdi:cash-usd
+  #Ontem kWh
+    - platform: mqtt
+      name: "Maquina de Secar Ontem"
+      state_topic: "tele/maquinasecar/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Yesterday"] }}'
+      unit_of_measurement: "kWh"  
+      icon: mdi:calendar-clock
+  #Ontem €
+    - platform: mqtt
+      name: "Maquina de Secar Ontem (€)"
+      state_topic: "tele/maquinasecar/SENSOR"
+      value_template: >-
+        {{states.sensor.maquina_de_secar_ontem.state | multiply(0.1603) | round(4)}}
+      unit_of_measurement: "€"
+      icon: mdi:cash-usd
+  #Total kWh 
+    - platform: mqtt
+      name: "Maquina de Secar Total"
+      state_topic: "tele/maquinasecar/SENSOR"
+      value_template: '{{ value_json["ENERGY"]["Total"] }}'
+      unit_of_measurement: "kWh"
+      icon: mdi:calendar-multiple
+  #Total €
+    - platform: mqtt
+      name: "Maquina de Secar Total (€)"
+      state_topic: "tele/maquinasecar/SENSOR"
+      value_template: >-
+        {{states.sensor.maquina_de_secar_total.state | multiply(0.1603) | round(4)}}
+      unit_of_measurement: "€"
+      icon: mdi:cash-usd
+        
+      
+#     _              _                                 _     _                 
+#    / \     _   _  | |_    ___    _ __ ___     __ _  | |_  (_)   ___    _ __  
+#   / _ \   | | | | | __|  / _ \  | '_ ` _ \   / _` | | __| | |  / _ \  | '_ \ 
+#  / ___ \  | |_| | | |_  | (_) | | | | | | | | (_| | | |_  | | | (_) | | | | |
+# /_/   \_\  \__,_|  \__|  \___/  |_| |_| |_|  \__,_|  \__| |_|  \___/  |_| |_|
+  automation:
+    - id: maquina_de_secar_on_restart
+      alias: 'Atualizar maquina_de_secar ao reiniciar HA'
+      hide_entity: True
+      trigger:
+        - platform: homeassistant
+          event: start
+      action:
+        - service: mqtt.publish
+          data:
+            topic: "cmnd/maquinasecar/power"
+            payload: ""
+            qos: 0
+            retain: 0
+    - id: maquina_secar_off
+      alias: 'Máquina Secar OFF'
+      trigger:
+        - platform: state
+          entity_id: switch.maquina_de_secar
+          from: 'on'
+          to: 'off'
+      condition:
+        - condition: numeric_state
+          entity_id: sensor.maquina_de_secar_wats
+          above: 0
+      action:
+        - service: notify.pushbullet
+          data_template:
+            title: "Maquina de secar desligada"
+            message: "A máquina de secar foi desligada e estava a {{ states.sensor.maquina_de_secar_wats.state }} watts, {{ states.sensor.maquina_de_secar_amperes.state }} amperes e {{ states.sensor.maquina_de_secar_voltagem.state }} volts"
+            target:
+              - email/fernando.pereira.ano@gmail.com
+              - email/ccaattaarriinnaa@gmail.com
+        - service: script.notify_save_to_file
+          data:
+            message: '{{ as_timestamp (now()) | timestamp_custom("%d/%b/%Y %T") }} - A máquina de secar foi desligada e estava a {{ states.sensor.maquina_de_secar_wats.state }} watts, {{ states.sensor.maquina_de_secar_amperes.state }} amperes e {{ states.sensor.maquina_de_secar_voltagem.state }} volts'      
+        - service: switch.turn_on
+          entity_id: switch.maquina_de_secar
+#   ____                                
+#  / ___|  _ __    ___    _   _   _ __  
+# | |  _  | '__|  / _ \  | | | | | '_ \ 
+# | |_| | | |    | (_) | | |_| | | |_) |
+#  \____| |_|     \___/   \__,_| | .__/ 
+#                                |_|              
+  group:
+    maquinasecar_pow:
+        name: Consumo Máquina de secar
+        view: no
+        entities:
+            - sensor.maquina_de_secar_wats
+            - sensor.maquina_de_secar_amperes
+            - sensor.maquina_de_secar_voltagem
+            - sensor.maquina_de_secar_hoje
+            - sensor.maquina_de_secar_hoje_
+            - sensor.maquina_de_secar_ontem
+            - sensor.maquina_de_secar_ontem_
+            - sensor.maquina_de_secar_total
+            - sensor.maquina_de_secar_total_
+            
+    maquinasecar:
+        name: Máquina de secar
+        view: no
+        entities:
+            - switch.maquina_de_secar
+            - sensor.maquina_de_secar_wats
+            - sensor.maquina_de_secar_amperes
+            - sensor.maquina_de_secar_voltagem
+            - sensor.maquina_de_secar_hoje
+            - sensor.maquina_de_secar_hoje_
+            - sensor.maquina_de_secar_ontem
+            - sensor.maquina_de_secar_ontem_
+            - sensor.maquina_de_secar_total
+            - sensor.maquina_de_secar_total_
